@@ -34,3 +34,57 @@ Uyghur-Corpus/
 │   └── ...
 │
 └── README.md                  # Documentation (You are here)
+
+
+import os
+import frontmatter  # pip install python-frontmatter
+
+def load_uyghur_corpus(data_dir="Articles"):
+    corpus = []
+    # Automatically iterate through all files in the directory
+    for filename in os.listdir(data_dir):
+        if filename.endswith(".md"):
+            filepath = os.path.join(data_dir, filename)
+            try:
+                # Load file and metadata
+                post = frontmatter.load(filepath)
+                entry = {
+                    "filename": filename,
+                    "title": post.get("title"),
+                    "author": post.get("author"),
+                    "topics": post.get("topics"),
+                    "content": post.content
+                }
+                corpus.append(entry)
+            except Exception as e:
+                print(f"Error loading {filename}: {e}")
+                
+    return corpus
+
+# Usage
+data = load_uyghur_corpus()
+print(f"Successfully loaded {len(data)} documents from the archive.")
+
+
+
+---
+title: "Article Title"
+author: "Author Name"
+date: "YYYY-MM-DD"
+genre: "Category (e.g., Politics, History)"
+topics: ["Topic1", "Topic2"]
+language: "ug"
+---
+
+[Full Text Content Here...]
+
+
+@misc{uyghur-corpus,
+  author = {Uyghur Archive Team},
+  title = {Uyghur Corpus: High-Quality Texts for NLP},
+  year = {2026},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  note = {Active and Expanding Archive},
+  howpublished = {\url{[https://github.com/Uyghur-Archive/Uyghur-Corpus](https://github.com/Uyghur-Archive/Uyghur-Corpus)}}
+}
