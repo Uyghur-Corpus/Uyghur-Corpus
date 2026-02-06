@@ -1,5 +1,5 @@
 ---
-title: "«ئاللاھ» بىزنىڭ، «تەڭرى» ئۇلارنىڭمۇ؟ (تولۇق نۇسخىسى)"
+title: "«ئاللاھ» بىزنىڭ، «تەڭرى» ئۇلارنىڭمۇ؟"
 author: "بۇرھان مۇھەممەد (Burhan Muhammed)"
 date: "2022-06-14"
 genre: "Theological & Linguistic Analysis"
