@@ -4,25 +4,27 @@ language:
 license: apache-2.0
 task_categories:
 - text-generation
-- text-classification
-- summarization
-- translation
-- question-answering
 tags:
 - uyghur
-- literature
-- culture
-- history
-- philosophy
 - corpus
-- dataset
-- linguistics
-pretty_name: "Uyghur High-Quality Multi-Source Corpus"
+- literary
+pretty_name: "Uyghur Corpus"
+dataset_info:
+  features:
+    - name: text
+      dtype: string
 configs:
 - config_name: default
   data_files:
   - split: train
-    path: "**/*.md"
+    path: 
+    - "Articles/*.md"
+    - "**/*.md"
+---
+
+# 📚 ئۇيغۇر تىلى يۇقىرى ساپالىق تېكىستلەر ئامبىرى
+
+بۇ ئامبار سۈنئىي ئىدراك مودېللىرىنى تەربىيەلەش ئۈچۈن توپلانغان ساپ ئۇيغۇر تىلىدىكى ئەسەرلەرنى ئۆز ئىچىگە ئالىدۇ.
 ---
 
 # 📚 ئۇيغۇر تىلى يۇقىرى ساپالىق كۆپ مەنبەلىك تېكىستلەر ئامبىرى (Uyghur Multi-Source Corpus)
