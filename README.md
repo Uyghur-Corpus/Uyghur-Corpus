@@ -2,11 +2,8 @@
 language:
 - ug
 license: apache-2.0
-size_categories:
-- n<1K
 task_categories:
 - text-generation
-pretty_name: "Uyghur Multi-Source Corpus"
 dataset_info:
   features:
     - name: text
@@ -15,7 +12,7 @@ configs:
 - config_name: default
   data_files:
   - split: train
-    path: "Articles/*.md"
+    path: "**/*.md"
 ---
 
 # 📚 ئۇيغۇر تىلى يۇقىرى ساپالىق تېكىستلەر ئامبىرى (Uyghur Multi-Source Corpus)
