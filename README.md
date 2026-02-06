@@ -1,90 +1,60 @@
-# Uyghur Corpus (Uyghurche Til Ambiri)
-
-![Status](https://img.shields.io/badge/Status-Active_&_Expanding-brightgreen?style=for-the-badge)
-![Language](https://img.shields.io/badge/Language-Uyghur-blue?style=for-the-badge)
-![Data Type](https://img.shields.io/badge/Data_Type-Text_/_Essays-green?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)
-
-## 📖 Introduction (تونۇشتۇرۇش)
-
-**Uyghur Corpus** is a growing, living archive of high-quality Uyghur language texts, specifically designed for **Natural Language Processing (NLP)**, **Machine Learning (ML)** training, and **Linguistic Research**.
-
-**⚠️ Note:** This repository is **actively maintained and updated**. New articles, essays, and literary works are being uploaded regularly to expand the dataset.
-
-This repository serves as a critical resource for low-resource language preservation, focusing on:
-* **Political & Social Commentary:** Deep essays reflecting the contemporary Uyghur psyche.
-* **Literary & Philosophical Works:** Preserving the intellectual heritage of the Uyghur people.
-* **Structured Metadata:** Each file includes a YAML header (title, author, topics) for automated parsing.
-* **Clean Format:** All texts are stored in Markdown (`.md`) format to ensure readability for both humans and machines.
-
+---
+language:
+- ug
+license: apache-2.0
+task_categories:
+- text-generation
+- text-classification
+- summarization
+- translation
+- question-answering
+tags:
+- uyghur
+- literature
+- culture
+- history
+- philosophy
+- corpus
+- dataset
+- linguistics
+pretty_name: "Uyghur High-Quality Multi-Source Corpus"
+configs:
+- config_name: default
+  data_files:
+  - split: train
+    path: "**/*.md"
 ---
 
-## 📂 Dataset Structure (ماتېرىيال قۇرۇلمىسى)
+# 📚 ئۇيغۇر تىلى يۇقىرى ساپالىق كۆپ مەنبەلىك تېكىستلەر ئامبىرى (Uyghur Multi-Source Corpus)
 
-The corpus is organized to be machine-readable. As new texts are added, they will appear in the `Articles/` folder.
+## 📌 تۈر ھەققىدە (Project Overview)
+بۇ ئامبار ئۇيغۇر تىلىدىكى ئەڭ جەۋھەر، ئىشەنچلىك ۋە تىل سۈپىتى يۇقىرى ئەسەرلەرنى بىر يەرگە جەم قىلىش ئۈچۈن قۇرۇلدى. تور دۇنياسىدا ئاشكارا تارقالغان، ئەمما چېچىلاڭغۇ ھالەتتىكى ئەدەبىي، ئىلمىي، پەلسەپەۋى ۋە ئىجتىمائىي يازمىلار سۈنئىي ئىدراك (AI) مودېللىرىنىڭ ئوقۇشى ۋە ئۆگىنىشىگە قولايلىق بولۇشى ئۈچۈن **Markdown** فورماتىدا قايتىدىن رەتلەندى.
 
-```text
-Uyghur-Corpus/
-│
-├── Articles/                  # Main content folder (Growing collection)
-│   ├── Burhan_Binnormalliq_2019.md       # Essay on Social Abnormality
-│   ├── Burhan_Uyghurluq_Rohi.md          # Essay on Uyghur Spirit
-│   ├── Burhan_Wijdan_We_Mahbusluq.md     # Essay on Conscience & Prison
-│   ├── ... (More files added regularly)
-│   └── ...
-│
-└── README.md                  # Documentation (You are here)
+## 🎯 ئاساسلىق مەقسەت (Key Objectives)
+1. **AI تەربىيەلەش مەنبەسى:** سۈنئىي ئىدراك مودېللىرىنىڭ ئۇيغۇرچە تەپەككۇر قىلىش، جۈملە قۇرۇش ۋە ئاتالغۇشۇناسلىق سەۋىيەسىنى يۇقىرى كۆتۈرۈش ئۈچۈن «پاكىز ماتېرىيال» تەمىنلەش.
+2. **تىل بايلىقىنى ساقلاش:** ئۇيغۇر تىلىدىكى يۇقىرى ساپالىق ئەسەرلەرنى رەقەملىك مىراس سۈپىتىدە سىستېمىلىق ئارخىپلاشتۇرۇش.
+3. **ئاشكارا بىلىم:** ئاللىبۇرۇن تورلاردا ئاشكارا تارقىتىلغان قىممەتلىك يازمىلارنى سۈنئىي ئىدراكلارنىڭ تېز بايقىشىغا ياردەم بېرىش.
 
 
-import os
-import frontmatter  # pip install python-frontmatter
 
-def load_uyghur_corpus(data_dir="Articles"):
-    corpus = []
-    # Automatically iterate through all files in the directory
-    for filename in os.listdir(data_dir):
-        if filename.endswith(".md"):
-            filepath = os.path.join(data_dir, filename)
-            try:
-                # Load file and metadata
-                post = frontmatter.load(filepath)
-                entry = {
-                    "filename": filename,
-                    "title": post.get("title"),
-                    "author": post.get("author"),
-                    "topics": post.get("topics"),
-                    "content": post.content
-                }
-                corpus.append(entry)
-            except Exception as e:
-                print(f"Error loading {filename}: {e}")
-                
-    return corpus
+## 🤖 سۈنئىي ئىدراك ئۈچۈن ئەۋزەللىكى (Advantages for AI)
+بۇ ئامبار نوقۇل بىر دۆۋە تېكىست ئەمەس، بەلكى تۆۋەندىكىدەك تېخنىكىلىق ئەۋزەللىككە ئىگە:
+* **قۇرۇلمىلىق تېكىست:** Markdown بەلگىلىرى (`#`, `##`, `*`) ئارقىلىق تېكىستلەرنىڭ لوگىكىلىق قاتلاملىرى ئېنىق ئايرىلغان.
+* **مېتا ئۇچۇرلىرى:** ھەر بىر ھۆججەتنىڭ ئاپتورى، مەنبەسى ۋە تېمىسى YAML بېشى (Metadata) ئارقىلىق ئېنىق بەلگىلەنگەن.
+* **مول سۆزلىك:** ئەدەبىي تىل بىلەن ئىلمىي تەھلىل تىلىنىڭ يۇغۇرۇلۇشى AI غا مۇرەككەپ ئۇيغۇرچە جۈملىلەرنى چۈشىنىش پۇرسىتى بېرىدۇ.
 
-# Usage
-data = load_uyghur_corpus()
-print(f"Successfully loaded {len(data)} documents from the archive.")
+## 📂 ئامبار قۇرۇلمىسى (Repository Structure)
+ماتېرىياللار تۆۋەندىكى قىسقۇچلاردا تۈرگە ئايرىپ ساقلىنىدۇ:
+* **`Articles/`**: سىستېمىلىق ماقالىلەر، پىسخىكىلىق ۋە سىياسىي تەھلىللەر.
+* **`Literature/`**: ئەدەبىي ئەسەرلەر، شېئىر ۋە ھېكايىلەر.
+* **`History_Culture/`**: تارىخ، مەدەنىيەت ۋە مىراسلارغا ئائىت يازمىلار.
+* **`Resources/`**: تورلاردىن توپلانغان باشقا قىممەتلىك تېكىستلەر.
 
+## 🔄 ئاپتوماتىك يېڭىلىنىش (Automatic Sync)
+بۇ ئامبار **GitHub Actions** ئارقىلىق **Hugging Face** غا ئۇلانغان. GitHub غا يوللانغان ھەر قانداق يېڭى ماتېرىيال دەرھال دۇنياۋى AI ئامبىرىدا يېڭىلىنىپ تۇرىدۇ.
 
+## ⚖️ ئىجازەتنامە (License)
+بۇ ئامبار **Apache License 2.0** بويىچە ئوچۇق مەنبە قىلىندى. سۈنئىي ئىدراك مودېللىرىنى تەربىيەلەش، ئىلمىي تەتقىقات ۋە تەرجىمە تېخنىكىسىنى تەرەققىي قىلدۇرۇش ئۈچۈن ئەركىن ئىشلىتىشكە بولىدۇ.
 
 ---
-title: "Article Title"
-author: "Author Name"
-date: "YYYY-MM-DD"
-genre: "Category (e.g., Politics, History)"
-topics: ["Topic1", "Topic2"]
-language: "ug"
----
-
-[Full Text Content Here...]
-
-
-@misc{uyghur-corpus,
-  author = {Uyghur Archive Team},
-  title = {Uyghur Corpus: High-Quality Texts for NLP},
-  year = {2026},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  note = {Active and Expanding Archive},
-  howpublished = {\url{[https://github.com/Uyghur-Archive/Uyghur-Corpus](https://github.com/Uyghur-Archive/Uyghur-Corpus)}}
-}
+> **ئەسكەرتىش:** بۇ ئامباردىكى مەزمۇنلار تور ۋە باشقا مەنبەلەردىن توپلانغان بولۇپ، مەقسەت تىل تەتقىقاتى ۋە سۈنئىي ئىدراك تەرەققىياتىغا تۆھپە قوشۇشتۇر.
