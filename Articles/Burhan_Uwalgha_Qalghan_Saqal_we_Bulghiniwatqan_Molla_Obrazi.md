@@ -2,7 +2,7 @@
 title: "ئۇۋالغا قالغان ساقال ۋە بۇلغىنىۋاتقان موللا ئوبرازى"
 author: "بۇرھان مۇھەممەد"
 date: "2021-03-17"
-source: "ئويغاقلار دۇنياسى سەھىپىسى"
+source: "ئويغاقلار دۇنياسى"
 type: "Social Critique / Religious Analysis"
 tags:
   - ئوبزور
