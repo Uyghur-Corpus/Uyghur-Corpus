@@ -1,6 +1,6 @@
 ---
 title: "تىرىكلىك نىشانى (1)"
-author: "بۇرھان مۇھەممەد (Burhan Muhammed)"
+author: "ئەنۋەر مۇھەممەد (ئەرتۈرك) (Enwer Muhammed)(Erturk)"
 date: "2010-10-01"
 genre: "Memoir & Philosophical Essay"
 topics: ["ھەج", "تەپەككۇر", "ھايات ۋە مامات", "ئىنسان تەبىئىتى", "ئۆزلۈك", "ئىبادەت", "جەمئىيەت تەنقىدى"]
