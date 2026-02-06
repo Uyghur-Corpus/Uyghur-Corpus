@@ -2,13 +2,11 @@
 language:
 - ug
 license: apache-2.0
+size_categories:
+- n<1K
 task_categories:
 - text-generation
-tags:
-- uyghur
-- corpus
-- literary
-pretty_name: "Uyghur Corpus"
+pretty_name: "Uyghur Multi-Source Corpus"
 dataset_info:
   features:
     - name: text
@@ -17,9 +15,15 @@ configs:
 - config_name: default
   data_files:
   - split: train
-    path: 
-    - "Articles/*.md"
-    - "**/*.md"
+    path: "Articles/*.md"
+---
+
+# 📚 ئۇيغۇر تىلى يۇقىرى ساپالىق تېكىستلەر ئامبىرى (Uyghur Multi-Source Corpus)
+
+بۇ ئامبار ئۇيغۇر تىلىدىكى ئەڭ جەۋھەر يازمىلارنى سۈنئىي ئىدراك مودېللىرىغا تونۇشتۇرۇش ئۈچۈن قۇرۇلدى. 
+
+### 📂 مەزمۇنلار
+بارلىق ماقالىلەر `Articles/` قىسقۇچىدا رەتلىك ساقلانغان.
 ---
 
 # 📚 ئۇيغۇر تىلى يۇقىرى ساپالىق تېكىستلەر ئامبىرى
