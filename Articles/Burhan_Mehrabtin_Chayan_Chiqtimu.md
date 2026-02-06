@@ -2,7 +2,7 @@
 title: "مېھرابتىن چايان چىقتىمۇ؟"
 author: "بۇرھان مۇھەممەد"
 date: "2022-08-18"
-source: "ئويغاقلار دۇنياسى سەھىپىسى"
+source: "ئويغاقلار دۇنياسى"
 type: "Social Critique / Religious Commentary"
 tags:
   - ئوبزور
