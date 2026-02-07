@@ -2,7 +2,7 @@
 title: "شاياتۇن ئەدىبلىككە، يەكچەشمە خېرىدارلىققا"
 author: "بۇرھان مۇھەممەد"
 date: "2022-08-16"
-source: "ئويغاقلار دۇنياسى"
+source: "ئويغاقلار دۇنياسى سەھىپىسى"
 type: "Social Critique / Literary Criticism"
 tags:
   - ئوبزور
