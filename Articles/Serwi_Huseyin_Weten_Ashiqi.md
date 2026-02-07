@@ -3,7 +3,7 @@ title: "ۋەتەن ئاشىقى"
 author: "سەرۋى ھۈسەين"
 date: "2020-03-15"
 location: "ئامېرىكا"
-source: "ئويغاقلار دۇنياسى"
+source: "ئويغاقلار دۇنياسى سەھىپىسى"
 type: "Poetry / Patriotic"
 tags:
   - شېئىرىيەت
