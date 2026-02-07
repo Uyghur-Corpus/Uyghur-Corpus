@@ -1,7 +1,7 @@
 ---
 title: "ۋەتەن كىملەرنى چاقىرىۋاتىدۇ؟"
 author: "بۇرھان مۇھەممەد"
-source: "ئويغاقلار دۇنياسى سەھىپىسى"
+source: "ئويغاقلار دۇنياسى"
 type: "Social Critique / National Consciousness"
 tags:
   - ۋەتەنپەرۋەرلىك
