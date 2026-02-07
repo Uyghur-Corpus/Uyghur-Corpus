@@ -2,7 +2,7 @@
 title: "ۋەتەن ئەھدىمىز ۋاپا مىزانىدا"
 author: "بۇرھان مۇھەممەد"
 date: "2022-07-29"
-source: "ئويغاقلار دۇنياسى سەھىپىسى"
+source: "ئويغاقلار دۇنياسى"
 type: "Social Ethics / Philosophical Essay"
 tags:
   - ۋاپادارلىق
