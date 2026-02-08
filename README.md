@@ -10,32 +10,39 @@ task_categories:
 - text-classification
 tags:
 - uyghur
+- nlp
+- dataset
 - political-critique
 - history
+- llm-training
 ---
 
-
-# Uyghur Socio-Political and Literary Dataset (109 Articles)
+# Uyghur Socio-Political and Literary Dataset (109+ Articles)
 ### ئۇيغۇر ئىجتىمائىي-سىياسىي ۋە ئەدەبىي ماقالىلەر سانلىق مەلۇمات توپلىمى
 
-This repository contains a curated dataset of **109 Uyghur articles**. The dataset is provided in **JSONL** format, making it ideal for Natural Language Processing (NLP) and AI research.
+This repository contains a curated dataset of **109+ Uyghur articles**. This is an **actively maintained** project, and new content is added regularly.
 
-بۇ ئامباردا جەمئىي **109 پارچە** ماقالە جەملەندى. سۈنئىي ئىدراك مودېللىرىنى مەشىق قىلدۇرۇش ۋە تىل تەتقىقاتى ئۈچۈن **JSONL** فورماتىدا تەييارلاندى.
+بۇ ئامباردا جەمئىي **109 پارچىدىن ئارتۇق** ماقالە جەملەندى. بۇ سانلىق مەلۇمات توپلىمى **ئاكتىپ يېڭىلىنىپ تۇرىدىغان تۈر** بولۇپ، يېڭى ماقالىلەر دائىملىق قوشۇلۇپ تۇرىدۇ.
 
----
+## 🔄 Project Status / يېڭىلىنىش ئەھۋالى
+* **Status:** Active / ئاكتىپ
+* **Update Frequency:** Regular updates / دائىملىق يېڭىلىنىدۇ
+* **Current Count:** 109 articles (As of Feb 2026)
+
+
 
 ## 📋 Dataset Overview / ئومۇمىي ئەھۋال
-* **Total Articles:** 109
 * **Format:** `.jsonl` (UTF-8)
-* **Authors:** Burhan Muhammed, Enwer Haji Muhammed (Erturk), etc.
+* **Authors:** Burhan Muhammed, Enwer Haji Muhammed (Erturk), Karimjan Ghafuri, Mahmud Muhiti, Muhammad Amin Bughra, etc.
 
----
+## 🛠 Usage Guide / تېخنىكىلىق قوللانما
+Developers can integrate this dataset using the Hugging Face `datasets` library:
 
-## 🚀 How to Use / ئىشلىتىش ئۇسۇلى
-You can load this dataset in Python:
 ```python
-import json
-with open('Uyghur_Dataset_Final.jsonl', 'r', encoding='utf-8') as f:
-    for line in f:
-        data = json.loads(line)
-        print(data['title'])
+from datasets import load_dataset
+
+# Load the dataset
+dataset = load_dataset("Uyghur-Corpus/Uyghur-Corpus")
+
+# Access an article
+print(dataset['train'][0]['content'])
