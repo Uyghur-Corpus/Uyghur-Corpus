@@ -26,7 +26,7 @@ This repository contains a curated dataset of **109+ Uyghur articles**. This is 
 
 ## 🔄 Project Status / يېڭىلىنىش ئەھۋالى
 * **Status:** Active / ئاكتىپ
-* **Update Frequency:** Regular updates / دائىملىق يېڭىلىنىدۇ
+* **Update Frequency:** Regular updates / يېڭىلىنىپ تۇرىدۇ
 * **Current Count:** 109 articles (As of Feb 2026)
 
 
