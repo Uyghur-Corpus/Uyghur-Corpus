@@ -1,9 +1,8 @@
 name: Global Parquet Converter
 on:
   push:
-    branches:
-      - main  # ياكى سىزنىڭ ئاساسىي شاخ نامىڭىز (master بولسا شۇنى يازىسىز)
-  workflow_dispatch: # بۇ سىزنىڭ قولدا قوزغىتىشىڭىزغىمۇ يول قويىدۇ
+    branches: [ "main", "master" ]
+  workflow_dispatch:
 
 jobs:
   convert:
@@ -14,8 +13,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # بارلىق تارىخىي ھۆججەتلەرنى كۆرۈش ئۈچۈن
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -23,7 +20,7 @@ jobs:
           python-version: '3.9'
 
       - name: Install dependencies
-        run: pip install pandas pyarrow
+        run: pip install pandas pyarrow fastparquet
 
       - name: Process All Files
         run: |
@@ -31,27 +28,42 @@ jobs:
           import pandas as pd
           import glob
           import os
-
-          # پۈتۈن ئامباردىكى بارلىق jsonl ھۆججەتلىرىنى ئىزدەيدۇ
+          
+          # بارلىق قىسقۇچلارنى سۈزۈپ چىقىدۇ
           files = glob.glob('**/*.jsonl', recursive=True)
+          print(f'تېپىلغان ھۆججەت سانى: {len(files)}')
           
           for f in files:
+              # .github مۇندەرىجىسىدىكىلەرنى ئۆتكۈزۈۋېتىدۇ
+              if '.github' in f: continue
               try:
-                  parquet_file = f.replace('.jsonl', '.parquet')
+                  if os.path.getsize(f) == 0:
+                      print(f'بوش ھۆججەت: {f}')
+                      continue
                   
-                  # ئەگەر parquet ھۆججىتى يوق بولسا ياكى jsonl يېڭىلانغان بولسا ئايلاندۇرىدۇ
                   df = pd.read_json(f, lines=True)
-                  df.to_parquet(parquet_file, engine='pyarrow', compression='snappy')
-                  print(f'مۇۋەپپەقىيەتلىك بىر تەرەپ قىلىندى: {f}')
+                  output = f.replace('.jsonl', '.parquet')
+                  df.to_parquet(output, engine='pyarrow', index=False)
+                  print(f'مۇۋەپپەقىيەتلىك ئايلاندى: {output}')
               except Exception as e:
-                  print(f'خاتالىق كۆرۈلدى {f}: {e}')
+                  print(f'خاتالىق {f}: {e}')
           "
 
-      - name: Commit and push changes
+      - name: Push results
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add **/*.parquet
-          # ئۆزگىرىش بولمىسا توختاپ قالماسلىق ئۈچۈن
-          git commit -m "Update all Parquet files (Historical & New)" || echo "No changes to commit"
-          git push
+          
+          # ئاۋۋال parquet ھۆججەتلىرىنىڭ بار-يوقلۇقىنى تەكشۈرىمىز
+          if ls **/*.parquet 1> /dev/null 2>&1; then
+            git add **/*.parquet
+            # ئۆزگىرىش بولغان-بولمىغانلىقىنى تەكشۈرۈپ ئاندىن Commit قىلىمىز
+            if git diff --staged --quiet; then
+              echo "يېڭى ئۆزگىرىش يوق."
+            else
+              git commit -m "Auto-convert to Parquet"
+              git push
+            fi
+          else
+            echo "ھېچقانداق Parquet ھۆججىتى ھاسىل بولمىدى، شۇڭا يوللانمىدى."
+          fi
