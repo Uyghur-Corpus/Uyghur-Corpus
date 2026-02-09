@@ -13,8 +13,6 @@ jobs:
     steps:
       - name: 1. كودلارنى يۈكلەش
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: 2. Python تەييارلاش
         uses: actions/setup-python@v4
@@ -24,32 +22,43 @@ jobs:
       - name: 3. قوراللارنى قاچىلاش
         run: pip install pandas pyarrow fastparquet
 
-      - name: 4. ھۆججەت ئىزدەش ۋە ئايلاندۇرۇش (Deep Scan)
+      - name: 4. جەملەش ۋە ئايلاندۇرۇش مەشغۇلاتى
         run: |
           python -c "
           import pandas as pd
           import os
-          
-          found_any = False
-          # پۈتۈن ئامبارنى تىنتىپ چىقىدۇ
-          for root, dirs, files in os.walk('.'):
-              for file in files:
-                  # ھۆججەت نامى .jsonl بىلەن ئاخىرلاشقان بولسا (چوڭ-كىچىك ھەرپ پەرقىسىز)
-                  if file.lower().endswith('.jsonl'):
-                      found_any = True
-                      input_path = os.path.join(root, file)
-                      output_path = input_path.rsplit('.', 1)[0] + '.parquet'
-                      
-                      print(f'تېپىلدى: {input_path}')
-                      try:
-                          df = pd.read_json(input_path, lines=True)
-                          df.to_parquet(output_path, engine='pyarrow', index=False)
-                          print(f'✅ مۇۋەپپەقىيەتلىك ئايلاندى: {output_path}')
-                      except Exception as e:
-                          print(f'❌ خاتالىق {input_path}: {e}')
-          
-          if not found_any:
-              print('⚠️ ئاگاھلاندۇرۇش: بىرەر دانىمۇ .jsonl ھۆججىتى تېپىلمىدى!')
+          import glob
+
+          # --- 1-بۆلەك: JSONL ھۆججەتلىرىنى بىر تەرەپ قىلىش ---
+          jsonl_files = glob.glob('**/*.jsonl', recursive=True)
+          for f in jsonl_files:
+              if '.github' in f: continue
+              try:
+                  df = pd.read_json(f, lines=True)
+                  output = f.replace('.jsonl', '.parquet')
+                  df.to_parquet(output, engine='pyarrow', index=False)
+                  print(f'✅ JSONL ئايلاندى: {output}')
+              except Exception as e:
+                  print(f'❌ JSONL خاتالىق {f}: {e}')
+
+          # --- 2-بۆلەك: Articles ئىچىدىكى Markdown ماقالىلىرىنى جەملەش ---
+          md_files = glob.glob('Articles/**/*.md', recursive=True)
+          if md_files:
+              articles_data = []
+              for f in md_files:
+                  try:
+                      with open(f, 'r', encoding='utf-8') as file:
+                          content = file.read()
+                          title = os.path.basename(f).replace('.md', '')
+                          articles_data.append({'title': title, 'text': content, 'source': f})
+                  except Exception as e:
+                      print(f'❌ MD ئوقۇش خاتالىقى {f}: {e}')
+              
+              if articles_data:
+                  df_articles = pd.DataFrame(articles_data)
+                  # بارلىق ماقالىلەرنى بىر دانە ھۆججەتكە جەملەيدۇ
+                  df_articles.to_parquet('articles_corpus.parquet', engine='pyarrow', index=False)
+                  print('✅ بارلىق ماقالىلەر articles_corpus.parquet قا جەملەندى.')
           "
 
       - name: 5. ئۆزگىرىشنى يوللاش
@@ -57,12 +66,12 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # بارلىق parquet ھۆججەتلىرىنى بىخەتەر قوشۇش
-          FILES=$(find . -name "*.parquet")
-          if [ -n "$FILES" ]; then
-            git add $FILES
-            git commit -m "Auto-convert to Parquet" || echo "ئۆزگىرىش يوق"
-            git push
+          # بارلىق parquet ھۆججەتلىرىنى قوشۇش
+          find . -name "*.parquet" -exec git add {} +
+          
+          if git diff --staged --quiet; then
+            echo "ئۆزگىرىش يوق."
           else
-            echo "يوللايدىغان parquet ھۆججىتى يوق."
+            git commit -m "Auto-update: Parquet datasets and Article corpus"
+            git push
           fi
