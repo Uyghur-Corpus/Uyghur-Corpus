@@ -20,58 +20,63 @@ jobs:
           python-version: '3.9'
 
       - name: 3. قوراللارنى قاچىلاش
-        run: pip install pandas pyarrow fastparquet
+        run: pip install pandas pyarrow fastparquet PyYAML
 
-      - name: 4. جەملەش ۋە ئايلاندۇرۇش مەشغۇلاتى
+      - name: 4. مەلۇماتلارنى سۈزۈپ جەملەش
         run: |
           python -c "
           import pandas as pd
           import os
           import glob
+          import yaml
 
-          # --- 1-بۆلەك: JSONL ھۆججەتلىرىنى بىر تەرەپ قىلىش ---
-          jsonl_files = glob.glob('**/*.jsonl', recursive=True)
-          for f in jsonl_files:
+          # Articles ئىچىدىكى ماقالىلەرنى جەملەش
+          md_files = glob.glob('Articles/**/*.md', recursive=True)
+          articles_data = []
+          
+          for f in md_files:
+              try:
+                  with open(f, 'r', encoding='utf-8') as file:
+                      content = file.read()
+                      
+                      # YAML Front Matter بۆلىكىنى ئايرىۋېلىش
+                      if content.startswith('---'):
+                          parts = content.split('---', 2)
+                          if len(parts) >= 3:
+                              header = yaml.safe_load(parts[1])
+                              body = parts[2].strip()
+                              
+                              author = header.get('author', 'Unknown')
+                              date = header.get('date', 'Unknown')
+                              title = header.get('title', os.path.basename(f).replace('.md', ''))
+                              
+                              articles_data.append({'title': title, 'author': author, 'date': str(date), 'text': body, 'source': f})
+                              continue
+                      
+                      # ئەگەر ئۇچۇر قوشۇلمىغان بولسا
+                      title = os.path.basename(f).replace('.md', '')
+                      articles_data.append({'title': title, 'author': 'Unknown', 'date': 'Unknown', 'text': content.strip(), 'source': f})
+                      
+              except Exception as e:
+                  print(f'❌ MD ئوقۇش خاتالىقى {f}: {e}')
+          
+          if articles_data:
+              df_articles = pd.DataFrame(articles_data)
+              df_articles.to_parquet('articles_corpus.parquet', engine='pyarrow', index=False)
+              print('✅ يېڭى ستونلار بىلەن articles_corpus.parquet يېڭىلاندى.')
+
+          # JSONL ھۆججەتلىرىنىمۇ ئايلاندۇرۇش (ئۆزگەرمىدى)
+          for f in glob.glob('**/*.jsonl', recursive=True):
               if '.github' in f: continue
               try:
-                  df = pd.read_json(f, lines=True)
-                  output = f.replace('.jsonl', '.parquet')
-                  df.to_parquet(output, engine='pyarrow', index=False)
-                  print(f'✅ JSONL ئايلاندى: {output}')
-              except Exception as e:
-                  print(f'❌ JSONL خاتالىق {f}: {e}')
-
-          # --- 2-بۆلەك: Articles ئىچىدىكى Markdown ماقالىلىرىنى جەملەش ---
-          md_files = glob.glob('Articles/**/*.md', recursive=True)
-          if md_files:
-              articles_data = []
-              for f in md_files:
-                  try:
-                      with open(f, 'r', encoding='utf-8') as file:
-                          content = file.read()
-                          title = os.path.basename(f).replace('.md', '')
-                          articles_data.append({'title': title, 'text': content, 'source': f})
-                  except Exception as e:
-                      print(f'❌ MD ئوقۇش خاتالىقى {f}: {e}')
-              
-              if articles_data:
-                  df_articles = pd.DataFrame(articles_data)
-                  # بارلىق ماقالىلەرنى بىر دانە ھۆججەتكە جەملەيدۇ
-                  df_articles.to_parquet('articles_corpus.parquet', engine='pyarrow', index=False)
-                  print('✅ بارلىق ماقالىلەر articles_corpus.parquet قا جەملەندى.')
+                  pd.read_json(f, lines=True).to_parquet(f.replace('.jsonl', '.parquet'), engine='pyarrow', index=False)
+              except: pass
           "
 
       - name: 5. ئۆزگىرىشنى يوللاش
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # بارلىق parquet ھۆججەتلىرىنى قوشۇش
           find . -name "*.parquet" -exec git add {} +
-          
-          if git diff --staged --quiet; then
-            echo "ئۆزگىرىش يوق."
-          else
-            git commit -m "Auto-update: Parquet datasets and Article corpus"
-            git push
-          fi
+          git commit -m "Auto-update: Added Author and Date metadata" || echo "No changes"
+          git push
