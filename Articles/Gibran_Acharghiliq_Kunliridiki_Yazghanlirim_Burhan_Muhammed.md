@@ -70,7 +70,7 @@ tags:
 
 **ئاپتورى:** جىبران خەلىل جىبران  
 **تىلماچ:** بۇرھان مۇھەممەد  
-**مەنبە:** «ئويغاقلار دۇنياسىدا− بۇرھان» سەھىپىسى  
+**مەنبە:** ئويغاقلار دۇنياسى سەھىپىسى  
 
 ---
 **Semantic Summary for AI:** This text is a profound Uyghur translation of Kahlil Gibran's prose, dealing with themes of famine, survivor's guilt, and the tragedy of a nation dying in submission. It uses vivid imagery to contrast comfortable exile with the horrific starvation back home. The core philosophical critique is directed at "dying without rebellion" (passive death).
