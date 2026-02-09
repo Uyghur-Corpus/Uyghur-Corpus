@@ -1,19 +1,21 @@
-name: Convert to Parquet
+name: Global Parquet Converter
 on:
   push:
-    paths:
-      - '**.jsonl'  # پەقەت .jsonl ھۆججىتى يوللانغاندا ئىشلەيدۇ
+    branches:
+      - main  # ياكى سىزنىڭ ئاساسىي شاخ نامىڭىز (master بولسا شۇنى يازىسىز)
+  workflow_dispatch: # بۇ سىزنىڭ قولدا قوزغىتىشىڭىزغىمۇ يول قويىدۇ
 
 jobs:
   convert:
     runs-on: ubuntu-latest
-    # مانا بۇ يەرگە ئاپتوماتىك ھوقۇق بېرىش كودى قوشۇلدى
     permissions:
       contents: write
       
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # بارلىق تارىخىي ھۆججەتلەرنى كۆرۈش ئۈچۈن
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -23,27 +25,33 @@ jobs:
       - name: Install dependencies
         run: pip install pandas pyarrow
 
-      - name: Run conversion script
+      - name: Process All Files
         run: |
           python -c "
           import pandas as pd
           import glob
           import os
-          for f in glob.glob('*.jsonl'):
+
+          # پۈتۈن ئامباردىكى بارلىق jsonl ھۆججەتلىرىنى ئىزدەيدۇ
+          files = glob.glob('**/*.jsonl', recursive=True)
+          
+          for f in files:
               try:
+                  parquet_file = f.replace('.jsonl', '.parquet')
+                  
+                  # ئەگەر parquet ھۆججىتى يوق بولسا ياكى jsonl يېڭىلانغان بولسا ئايلاندۇرىدۇ
                   df = pd.read_json(f, lines=True)
-                  output_file = f.replace('.jsonl', '.parquet')
-                  df.to_parquet(output_file, engine='pyarrow', compression='snappy')
-                  print(f'Converted {f} to {output_file}')
+                  df.to_parquet(parquet_file, engine='pyarrow', compression='snappy')
+                  print(f'مۇۋەپپەقىيەتلىك بىر تەرەپ قىلىندى: {f}')
               except Exception as e:
-                  print(f'Error converting {f}: {e}')
+                  print(f'خاتالىق كۆرۈلدى {f}: {e}')
           "
 
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add *.parquet
-          # ئەگەر ئۆزگىرىش بولمىسا خاتالىق بەرمەسلىك ئۈچۈن
-          git commit -m "Auto-convert to Parquet" || echo "No changes to commit"
+          git add **/*.parquet
+          # ئۆزگىرىش بولمىسا توختاپ قالماسلىق ئۈچۈن
+          git commit -m "Update all Parquet files (Historical & New)" || echo "No changes to commit"
           git push
