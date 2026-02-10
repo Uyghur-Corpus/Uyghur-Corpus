@@ -28,4 +28,4 @@ jobs:
           
           # پۈتۈن ئامبارنى بىرلا بۇيرۇق بىلەن ماسقەدەملەش
           # بۇ ئۇسۇل LFS مەسىلىسىنى ئاپتوماتىك بىر تەرەپ قىلىدۇ
-          huggingface-cli upload-hub Uyghur-Corpus/Uyghur-Corpus . --repo-type=dataset --commit-message "Sync from GitHub Actions"
+          huggingface-cli upload Uyghur-Corpus/Uyghur-Corpus . --repo-type=dataset --commit-message "Sync from GitHub Actions" --token $HF_TOKEN
