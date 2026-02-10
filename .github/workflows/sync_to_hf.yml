@@ -10,18 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # ئەڭ يېڭى نۇسخىسىنى ئىشلەتتۇق
         with:
           fetch-depth: 0
           lfs: true
 
-      - name: Install Hugging Face Hub CLI
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Hugging Face Hub
         run: |
-          pip install -U "huggingface_hub[cli]"
+          pip install --upgrade huggingface_hub
 
       - name: Sync to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          # python3 -m نى ئىشلىتىش ئارقىلىق 'command not found' خاتالىقىنىڭ ئالدىنى ئالىمىز
-          python3 -m huggingface_hub.commands.huggingface_cli upload Uyghur-Corpus/Uyghur-Corpus . --repo-type=dataset --commit-message "Sync from GitHub Actions" --token $HF_TOKEN
+          # huggingface-cli نى بىۋاسىتە ئىشلەتمەي، پايتون بىلەن مۇنداق چاقىرىمىز:
+          python -c "from huggingface_hub import HfApi; api = HfApi(); api.upload_folder(folder_path='.', repo_id='Uyghur-Corpus/Uyghur-Corpus', repo_type='dataset', commit_message='Sync from GitHub Actions', token='${{ secrets.HF_TOKEN }}')"
