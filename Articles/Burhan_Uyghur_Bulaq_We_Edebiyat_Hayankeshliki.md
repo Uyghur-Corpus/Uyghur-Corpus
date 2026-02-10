@@ -4,7 +4,7 @@ author: "بۇرھان مۇھەممەد (Burhan Muhammed)"
 date: "2026-02-10"
 category: "Literary Criticism / Social Commentary"
 language: "ug"
-source: "ئويغاقلار دۇنياسى"
+source: "ئويغاقلار دۇنياسى سەھىپىسى"
 tags:
   - ئەدەبىيات تەنقىدى
   - ئۇيغۇر بۇلاق
