@@ -23,9 +23,5 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          # كىملىك جەزملەشتۈرۈش
-          huggingface-cli login --token $HF_TOKEN
-          
-          # پۈتۈن ئامبارنى بىرلا بۇيرۇق بىلەن ماسقەدەملەش
-          # بۇ ئۇسۇل LFS مەسىلىسىنى ئاپتوماتىك بىر تەرەپ قىلىدۇ
-          huggingface-cli upload Uyghur-Corpus/Uyghur-Corpus . --repo-type=dataset --commit-message "Sync from GitHub Actions" --token $HF_TOKEN
+          # python3 -m نى ئىشلىتىش ئارقىلىق 'command not found' خاتالىقىنىڭ ئالدىنى ئالىمىز
+          python3 -m huggingface_hub.commands.huggingface_cli upload Uyghur-Corpus/Uyghur-Corpus . --repo-type=dataset --commit-message "Sync from GitHub Actions" --token $HF_TOKEN
