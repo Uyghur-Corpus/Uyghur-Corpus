@@ -1,29 +1,31 @@
-name: Sync to Hugging Face
-
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
-
-jobs:
-  sync-to-hub:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4 # ئەڭ يېڭى نۇسخىسىنى ئىشلەتتۇق
-        with:
-          fetch-depth: 0
-          lfs: true
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-
-      - name: Sync to Hugging Face
+- name: 4. مەلۇماتلارنى سۈزۈپ جەملەش ۋە ماس قەدەملەش
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
+          # 1. ماقالىلەرنى Parquet غا ئايلاندۇرۇش (كونا كودىڭىز)
+          python -c "
+          import pandas as pd
+          import os
+          import glob
+          import yaml
+          md_files = glob.glob('Articles/**/*.md', recursive=True)
+          articles_data = []
+          for f in md_files:
+              try:
+                  with open(f, 'r', encoding='utf-8') as file:
+                      content = file.read()
+                      if content.startswith('---'):
+                          parts = content.split('---', 2)
+                          if len(parts) >= 3:
+                              header = yaml.safe_load(parts[1])
+                              body = parts[2].strip()
+                              articles_data.append({'title': header.get('title', 'Unknown'), 'author': header.get('author', 'Unknown'), 'date': str(header.get('date', 'Unknown')), 'text': body, 'source': f})
+              except Exception as e: print(f'Error {f}: {e}')
+          if articles_data:
+              pd.DataFrame(articles_data).to_parquet('articles_corpus.parquet', engine='pyarrow', index=False)
+          "
+
+          # 2. Hugging Face غا تولۇق ماس قەدەملەش (يېڭى كود)
           python -c "
           from huggingface_hub import HfApi
           api = HfApi()
