@@ -20,13 +20,19 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install Hugging Face Hub
-        run: |
-          pip install --upgrade huggingface_hub
-
       - name: Sync to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          # huggingface-cli نى بىۋاسىتە ئىشلەتمەي، پايتون بىلەن مۇنداق چاقىرىمىز:
-          python -c "from huggingface_hub import HfApi; api = HfApi(); api.upload_folder(folder_path='.', repo_id='Uyghur-Corpus/Uyghur-Corpus', repo_type='dataset', commit_message='Sync from GitHub Actions', token='${{ secrets.HF_TOKEN }}')"
+          python -c "
+          from huggingface_hub import HfApi
+          api = HfApi()
+          api.upload_folder(
+              folder_path='.',
+              repo_id='Uyghur-Corpus/Uyghur-Corpus',
+              repo_type='dataset',
+              commit_message='Sync from GitHub Actions (including deletions)',
+              token='${{ secrets.HF_TOKEN }}',
+              delete_patterns='*',
+              path_in_repo=''
+          )"
