@@ -59,12 +59,12 @@ description: "بۇ ماقالىدە «ئۇيغۇر بۇلاق» ناملىق ك�
 ---
 
 **نەقىللەر:**
-1)   پىروفېسسور قاسىم ئابدۇھ قاسىمنىڭ «الرواية التاريخية في الأدب العربي الحديث»، ناملىق كىتابى، دارۇل مائارىپ نەشرىياتى، 1979- يىل، 188 - بەت.
-2) György Lukács, The Historical Novel, Merlin Press, 1962, P.151-152.
-3) جورجى زەيداننىڭ «الحجاج بن يوسف» ناملىق تارىخىي رومانىنىڭ «كىرىش سۆز» قىسمى. دارۇلھىلال نەشرىياتى، 1989 – يىل نەشرى، 6 - بەت. 
-4) György Lukács, The Historical Novel, Merlin Press, 1962, P.168.
-5) Mikhail Bakhtin, ‘Discourse and the Novel’, in The Dialogic Imagination: Four Essays, tr. Caryl Emerson and Michael Holquist, Ed. Michael Holquist (Austin, TX: University of Texas Press, 1981), P.333.
-6) György Lukács, The Historical Novel, Merlin Press, 1962, P.167.
-7) ئابدۇشۈكۈر مۇھەممەتئىمىن: يېپەك يولىدىكى توققۇز ھېكمەت، شىنجاڭ خەلق نەشرىياتى، 2001 - يىل نەشرى، 187 - بەت. 
-8. ئابدۇشۈكۈر مۇھەممەتئىمىن: ئۇيغۇرلاردا ئىسلام مەدەنىيىتى، شىنجاڭ خەلق نەشرىياتى، 2002 - يىل، 57 – بەت. 
-9) يۇقىرىقى مەنبە، 199 - بەت.
+(1)  پىروفېسسور قاسىم ئابدۇھ قاسىمنىڭ «الرواية التاريخية في الأدب العربي الحديث»، ناملىق كىتابى، دارۇل مائارىپ نەشرىياتى، 1979- يىل، 188 - بەت.
+(2) György Lukács, The Historical Novel, Merlin Press, 1962, P.151-152.
+(3) جورجى زەيداننىڭ «الحجاج بن يوسف» ناملىق تارىخىي رومانىنىڭ «كىرىش سۆز» قىسمى. دارۇلھىلال نەشرىياتى، 1989 – يىل نەشرى، 6 - بەت.
+(4) György Lukács, The Historical Novel, Merlin Press, 1962, P.168.
+Mikhail Bakhtin, ‘Discourse and the Novel’, in The Dialogic Imagination: Four Essays, tr. Caryl Emerson and Michael Holquist, Ed.(5)   Michael(1)  Holquist (Austin, TX: University of Texas Press, 1981), P.333.
+(6) György Lukács, The Historical Novel, Merlin Press, 1962, P.167.
+(7) ئابدۇشۈكۈر مۇھەممەتئىمىن: يېپەك يولىدىكى توققۇز ھېكمەت، شىنجاڭ خەلق نەشرىياتى، 2001 - يىل نەشرى، 187 - بەت.
+(8) ئابدۇشۈكۈر مۇھەممەتئىمىن: ئۇيغۇرلاردا ئىسلام مەدەنىيىتى، شىنجاڭ خەلق نەشرىياتى، 2002 - يىل، 57 – بەت.
+(9) يۇقىرىقى مەنبە، 199 - بەت.
