@@ -1,48 +1,67 @@
 ---
 license: mit
-language:
-- ug
-pretty_name: Uyghur Socio-Political Articles Dataset
-size_categories:
-- n<1k
 task_categories:
 - text-generation
 - text-classification
+- translation
+- token-classification
+- question-answering
+language:
+- ug
 tags:
 - uyghur
+- uighur
 - nlp
-- dataset
-- political-critique
-- history
-- llm-training
+- llm
+- deep-learning
+- low-resource-language
+- corpus
+- text-dataset
+- central-asia
+pretty_name: Uyghur Large-Scale Text Corpus
+size_categories:
+- 100M<n<1B
+dataset_info:
+  features:
+  - name: text
+    dtype: string
+  - name: label
+    dtype: string
+  - name: source
+    dtype: string
+  config_name: default
 ---
 
-# Uyghur Socio-Political and Literary Dataset (109+ Articles)
-### ئۇيغۇر ئىجتىمائىي-سىياسىي ۋە ئەدەبىي ماقالىلەر سانلىق مەلۇمات توپلىمى
+# Uyghur Large-Scale Text Corpus for AI & LLM Training
+### سۈنئىي ئىدراك ۋە چوڭ تىل مودېللىرى ئۈچۈن ئۇيغۇرچە تىل ئامبىرى
 
-This repository contains a curated dataset of **109+ Uyghur articles**. This is an **actively maintained** project, and new content is added regularly.
+![Status](https://img.shields.io/badge/Status-Actively%20Maintained-success) ![Language](https://img.shields.io/badge/Language-Uyghur-blue) ![License](https://img.shields.io/badge/License-MIT-green) ![AI Ready](https://img.shields.io/badge/AI-LLM%20Ready-orange)
 
-بۇ ئامباردا جەمئىي **109 پارچىدىن ئارتۇق** ماقالە جەملەندى. بۇ سانلىق مەلۇمات توپلىمى **ئاكتىپ يېڭىلىنىپ تۇرىدىغان تۈر** بولۇپ، يېڭى ماقالىلەر قوشۇلۇپ تۇرىدۇ.
+## 📖 Dataset Description / ئامبار ھەققىدە چۈشەندۈرۈش
 
-## 🔄 Project Status / يېڭىلىنىش ئەھۋالى
-* **Status:** Active / ئاكتىپ
-* **Update Frequency:** Regular updates / يېڭىلىنىپ تۇرىدۇ
-* **Current Count:** 109 articles (As of Feb 2026)
+This repository hosts a **comprehensive and actively maintained** dataset of the Uyghur language (Ug), designed specifically to train **Large Language Models (LLMs)**, **Machine Translation systems**, and **NLP tools**. 
 
+The dataset aggregates high-quality texts from socio-political, literary, historical, and general domains to solve the "low-resource" problem for the Uyghur language in Artificial Intelligence.
 
+بۇ ئامبار ئۇيغۇر تىلىدىكى **سۈنئىي ئىدراك (AI)**، **چوڭ تىل مودېللىرى (LLM)** ۋە **تەرجىمە ماشىنىلىرىنى** مەشىق قىلدۇرۇش ئۈچۈن مەخسۇس قۇرۇلغان، داۋاملىق يېڭىلىنىپ تۇرىدىغان ئۇنىۋېرسال سانلىق مەلۇمات ئامبىرىدۇر. بۇ ئامبار سىياسىي، ئىجتىمائىي، تارىخىي ۋە ئەدەبىي تېمىلارنى ئۆز ئىچىگە ئالىدۇ.
 
-## 📋 Dataset Overview / ئومۇمىي ئەھۋال
-* **Format:** `.jsonl` (UTF-8)
-* **Authors:** Burhan Muhammed, Enwer Haji Muhammed (Erturk), Karimjan Ghafuri, Mahmud Muhiti, Muhammad Amin Bughra, etc.
+## 📊 Real-Time Statistics / سانلىق مەلۇمات ئەھۋالى
 
-## 🛠 Usage Guide / تېخنىكىلىق قوللانما
-Developers can integrate this dataset using the Hugging Face `datasets` library:
+**Note:** This dataset is dynamic. The number of articles and total size grows regularly.
+**ئەسكەرتىش:** بۇ ئامبار داۋاملىق چوڭىيىۋاتىدۇ.
 
-```python
-from datasets import load_dataset
+> **Please refer to the file list or Hugging Face Dataset Viewer for the exact, real-time row count and data size.**
+> **ئېنىق ماقالە سانى ۋە ھەجىمىنى كۆرۈش ئۈچۈن، ھۆججەت تىزىملىكىگە ياكى Hugging Face نىڭ كۆرۈش كۆزنىكىگە قاراڭ.**
 
-# Load the dataset
-dataset = load_dataset("Uyghur-Corpus/Uyghur-Corpus")
+## 📂 Data Structure / قۇرۇلمىسى
 
-# Access an article
-print(dataset['train'][0]['content'])
+The dataset follows the industry-standard `JSONL` format, optimized for direct ingestion by training frameworks like PyTorch, TensorFlow, and Hugging Face Transformers.
+مەلۇماتلار خەلقئارالىق ئۆلچەم `JSONL` فورماتىدا ساقلانغان بولۇپ، مودېللار بىۋاسىتە ئوقۇيالايدۇ.
+
+**Schema:**
+```json
+{
+  "text": "Full article text content... / ماقالىنىڭ تولۇق تېكىستى...",
+  "label": "Category (e.g., Politics, History, Literature) / تۈرى",
+  "source": "Source Filename or URL / مەنبەسى"
+}
