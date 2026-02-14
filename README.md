@@ -11,7 +11,6 @@ language:
 tags:
 - uyghur
 - uighur
-- uygur
 - nlp
 - llm
 - deep-learning
