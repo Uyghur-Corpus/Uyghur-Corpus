@@ -19,8 +19,6 @@ tags:
 - text-dataset
 - central-asia
 pretty_name: Uyghur Large-Scale Text Corpus
-size_categories:
-- 100M<n<1B
 dataset_info:
   features:
   - name: text
