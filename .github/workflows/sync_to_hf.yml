@@ -21,13 +21,12 @@ jobs:
       - name: 2. Python تەييارلاش
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10' # تېخىمۇ تۇراقلىق نۇسخا
+          python-version: '3.10'
 
       - name: 3. زۆرۈر قوراللارنى قاچىلاش
-        # pyarrow نىڭ تۇراقلىق نۇسخىسىنى مەجبۇرىي قاچىلايمىز
         run: |
           pip install --upgrade pip
-          pip install pandas pyarrow==14.0.1 fastparquet PyYAML huggingface_hub
+          pip install pandas pyarrow fastparquet PyYAML huggingface_hub
 
       - name: 4. مەلۇماتلارنى جەملەش ۋە ماس قەدەملەش
         env:
@@ -41,6 +40,7 @@ jobs:
           import json
           import re
           from collections import Counter, OrderedDict
+          import copy
 
           def get_auto_tags(text):
               words = re.findall(r'[\u0600-\u06FF]{4,}', text)
@@ -93,24 +93,38 @@ jobs:
           for i in range(len(all_parts)):
               if i in skip: continue
               curr = all_parts[i]
+              
               sections = []
               for j in range(i + 1, len(all_parts)):
                   if all_parts[j]['_base'] == curr['_base']:
-                      sections.append(all_parts[j])
+                      # Circular reference تۈزەتكەن جاي: ئالدى بىلەن نۇسخىسىنى ئالىمىز
+                      sec_node = copy.deepcopy(all_parts[j])
+                      # يوشۇرۇن ئۇلاش ئۇچۇرلىرىنى ئۆچۈرىمىز
+                      sec_node.pop('_base', None)
+                      sec_node.pop('_part', None)
+                      sections.append(sec_node)
                       skip.add(j)
                   else: break
+              
+              # ئاخىرقى نۇسخىنى رەتلەش
+              output_node = copy.deepcopy(curr)
+              output_node.pop('_base', None)
+              output_node.pop('_part', None)
+
               if sections:
-                  full_sec = [curr] + sections
-                  curr['sections'] = full_sec
-                  curr['content'] = '\n\n---\n\n'.join([s['content'] for s in full_sec])
-              final_node = OrderedDict([(k, v) for k, v in curr.items() if not k.startswith('_') and v is not None])
-              final_data.append(final_node)
+                  # تۇنجى قىسىم ئۇچۇرىنى رەتلەپ، باشقا قىسىملار بىلەن ئۇلايمىز
+                  first_part = copy.deepcopy(output_node)
+                  output_node['sections'] = [first_part] + sections
+                  output_node['content'] = '\n\n---\n\n'.join([s['content'] for s in output_node['sections']])
+                  output_node['tags'] = get_auto_tags(output_node['content'])
+
+              final_data.append(output_node)
 
           if final_data:
               df = pd.DataFrame(final_data)
-              # يىمىرىلىشنىڭ ئالدىنى ئېلىش ئۈچۈن fastparquet ماتورىنى سىنايمىز
-              df.to_parquet('articles_corpus.parquet', engine='fastparquet', index=False)
-              print('✅ Parquet updated.')
+              # pyarrow يىمىرىلىش مەسىلىسىنى يەنىلا ئالدىنى ئېلىش ئۈچۈن پارامېتىر قوشتۇق
+              df.to_parquet('articles_corpus.parquet', engine='pyarrow', index=False)
+              print('✅ Parquet updated successfully.')
 
           from huggingface_hub import HfApi
           api = HfApi()
