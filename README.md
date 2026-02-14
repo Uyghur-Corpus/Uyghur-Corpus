@@ -57,9 +57,10 @@ The dataset follows the industry-standard `JSONL` format, optimized for direct i
 مەلۇماتلار خەلقئارالىق ئۆلچەم `JSONL` فورماتىدا ساقلانغان بولۇپ، مودېللار بىۋاسىتە ئوقۇيالايدۇ.
 
 **Schema:**
-```json
 {
-  "text": "Full article text content... / ماقالىنىڭ تولۇق تېكىستى...",
-  "label": "Category (e.g., Politics, History, Literature) / تۈرى",
-  "source": "Source Filename or URL / مەنبەسى"
+  "title": "Article Title / ماقالە ماۋزۇسى",
+  "author": "Author Name / ئاپتور",
+  "date": "Publication Date / ۋاقتى",
+  "tags": ["Topic1", "Topic2"],
+  "content": "Full text in Markdown... / تولۇق تېكىست"
 }
