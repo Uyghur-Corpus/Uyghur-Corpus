@@ -74,4 +74,6 @@ The dataset follows the industry-standard `JSONL` format, optimized for direct i
   "date": "Publication Date / ۋاقتى",
   "tags": ["Topic1", "Topic2"],
   "content": "Full text in Markdown... / تولۇق تېكىست"
+  "language": "ug",
+   "sections": [{"title": "تارماق ماۋزۇ", "content": "بۆلەك مەزمۇنى", "tags": []}]
 }
