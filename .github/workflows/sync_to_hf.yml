@@ -50,7 +50,6 @@ jobs:
               source_match = re.search(r'(?:مەنبە|Source)\s*[:：]\s*(.*)', text, re.I)
               return (date_match.group(0) if date_match else None, source_match.group(1).strip() if source_match else None)
 
-          # Articles ئىچىدىكى ماقالىلەرنى تېپىش
           md_files = sorted(glob.glob('Articles/**/*.md', recursive=True))
           all_parts = []
 
@@ -62,7 +61,6 @@ jobs:
                       num_match = re.search(r'(\d+)$', name_only)
                       base_name = re.sub(r'\s*\d+$', '', name_only).strip()
                       part_num = int(num_match.group(1)) if num_match else 1
-                      
                       lines = [l.strip() for l in content.split('\n') if l.strip()]
                       if not lines: continue
                       
@@ -87,7 +85,6 @@ jobs:
                       all_parts.append(node)
               except Exception as e: print(f'Error {f}: {e}')
 
-          # قىسىملىق ماقالىلەرنى بىرىكتۈرۈش
           final_data = []
           skip = set()
           for i in range(len(all_parts)):
@@ -99,21 +96,18 @@ jobs:
                       sections.append(all_parts[j])
                       skip.add(j)
                   else: break
-              
               if sections:
                   full_sec = [curr] + sections
                   curr['sections'] = full_sec
                   curr['content'] = '\n\n---\n\n'.join([s['content'] for s in full_sec])
-              
               final_node = OrderedDict([(k, v) for k, v in curr.items() if not k.startswith('_') and v is not None])
               final_data.append(final_node)
 
           if final_data:
               df = pd.DataFrame(final_data)
               df.to_parquet('articles_corpus.parquet', engine='pyarrow', index=False)
-              print('✅ Parquet يېڭىلاندى.')
+              print('✅ Parquet updated.')
 
-          # Hugging Face غا ماس قەدەملەش
           from huggingface_hub import HfApi
           api = HfApi()
           api.upload_folder(
