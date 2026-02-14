@@ -32,12 +32,14 @@ dataset_info:
     dtype: string
   - name: sections
     list:
+    - name: title
+      dtype: string
     - name: content
+      dtype: string
+    - name: date
       dtype: string
     - name: tags
       sequence: string
-    - name: title
-      dtype: string
   config_name: default
 ---
 
