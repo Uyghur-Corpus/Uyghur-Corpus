@@ -3,9 +3,6 @@ license: mit
 task_categories:
 - text-generation
 - text-classification
-- translation
-- token-classification
-- question-answering
 language:
 - ug
 tags:
@@ -13,20 +10,34 @@ tags:
 - uighur
 - nlp
 - llm
-- deep-learning
-- low-resource-language
-- corpus
-- text-dataset
-- central-asia
-pretty_name: Uyghur Large-Scale Text Corpus
+- socio-political
+- history
+- literature
+pretty_name: Uyghur Socio-Political & Literary Dataset
 dataset_info:
   features:
-  - name: text
+  - name: title
     dtype: string
-  - name: label
+  - name: author
+    dtype: string
+  - name: date
+    dtype: string
+  - name: tags
+    sequence: string
+  - name: content
+    dtype: string
+  - name: language
     dtype: string
   - name: source
     dtype: string
+  - name: sections
+    list:
+    - name: content
+      dtype: string
+    - name: tags
+      sequence: string
+    - name: title
+      dtype: string
   config_name: default
 ---
 
