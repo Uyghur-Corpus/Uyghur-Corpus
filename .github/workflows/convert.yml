@@ -73,10 +73,21 @@ jobs:
               except: pass
           "
 
-      - name: 5. ئۆزگىرىشنى يوللاش
+          - name: 5. ئۆزگىرىشنى يوللاش (GitHub & Hugging Face)
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Parquet ھۆججەتلىرىنى قوشۇش
           find . -name "*.parquet" -exec git add {} +
-          git commit -m "Auto-update: Added Author and Date metadata" || echo "No changes"
-          git push
+          git commit -m "Auto-update: Parquet files and metadata" || echo "No changes to commit"
+          
+          # 1. ئالدى بىلەن GitHub نى يېڭىلاش
+          git push origin main
+          
+          # 2. ئاندىن Hugging Face غا ماس قەدەملەش (مەجبۇرىي يوللاش)
+          # Username ۋە DatasetName نى ئۆزىڭىزنىڭكىگە ئۆزگەرتىڭ
+          git remote add hf https://x-access-token:$HF_TOKEN@huggingface.co/datasets/ئىشلەتكۈچى_ئىسمى/تۈر_ئىسمى || true
+          git push hf main --force
