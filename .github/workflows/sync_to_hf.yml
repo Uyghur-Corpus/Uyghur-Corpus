@@ -21,10 +21,13 @@ jobs:
       - name: 2. Python تەييارلاش
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.10' # تېخىمۇ تۇراقلىق نۇسخا
 
       - name: 3. زۆرۈر قوراللارنى قاچىلاش
-        run: pip install pandas pyarrow fastparquet PyYAML huggingface_hub
+        # pyarrow نىڭ تۇراقلىق نۇسخىسىنى مەجبۇرىي قاچىلايمىز
+        run: |
+          pip install --upgrade pip
+          pip install pandas pyarrow==14.0.1 fastparquet PyYAML huggingface_hub
 
       - name: 4. مەلۇماتلارنى جەملەش ۋە ماس قەدەملەش
         env:
@@ -105,7 +108,8 @@ jobs:
 
           if final_data:
               df = pd.DataFrame(final_data)
-              df.to_parquet('articles_corpus.parquet', engine='pyarrow', index=False)
+              # يىمىرىلىشنىڭ ئالدىنى ئېلىش ئۈچۈن fastparquet ماتورىنى سىنايمىز
+              df.to_parquet('articles_corpus.parquet', engine='fastparquet', index=False)
               print('✅ Parquet updated.')
 
           from huggingface_hub import HfApi
@@ -124,6 +128,6 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add articles_corpus.parquet
+          git add articles_corpus.parquet || echo 'No parquet to add'
           git commit -m "Auto-update parquet" || echo "No changes"
           git push
