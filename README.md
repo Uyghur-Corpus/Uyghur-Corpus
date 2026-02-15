@@ -1,47 +1,27 @@
----
-license: mit
-task_categories:
-- text-generation
-- text-classification
-language:
-- ug
-tags:
-- uyghur
-- uighur
-- nlp
-- llm
-- socio-political
-- history
-- literature
-pretty_name: Uyghur Socio-Political & Literary Dataset
 dataset_info:
   features:
-  - name: title
-    dtype: string
-  - name: author
-    dtype: string
-  - name: date
-    dtype: string
-  - name: tags
-    sequence: string
-  - name: content
-    dtype: string
-  - name: language
-    dtype: string
-  - name: source
-    dtype: string
-  - name: sections
-    list:
     - name: title
       dtype: string
-    - name: content
+    - name: author
       dtype: string
     - name: date
       dtype: string
     - name: tags
       sequence: string
-  config_name: default
----
+    - name: content
+      dtype: string
+    - name: language
+      dtype: string
+    - name: source
+      dtype: string
+    - name: sections
+      list:
+        - name: title
+          dtype: string
+        - name: content
+          dtype: string
+        - name: tags
+          sequence: string
 
 # Uyghur Large-Scale Text Corpus for AI & LLM Training
 ### سۈنئىي ئىدراك ۋە چوڭ تىل مودېللىرى ئۈچۈن ئۇيغۇرچە تىل ئامبىرى
