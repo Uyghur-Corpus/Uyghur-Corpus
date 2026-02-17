@@ -5,7 +5,7 @@ license: mit
 task_categories:
 - text-generation
 - translation
-- language-modeling
+- fill-mask
 pretty_name: Uyghur Corpus (AI-Optimized)
 dataset_info:
   features:
@@ -31,7 +31,7 @@ dataset_info:
 # 🌟 Uyghur AI Corpus: Bridging Heritage & Technology
 # 🌟 ئۇيغۇرچە سۈنئىي ئىدراك خەزىنىسى: مىراس ۋە تېخنىكا كۆۋرۈكى
 
-![Status](https://img.shields.io/badge/Status-Active-success) ![Language](https://img.shields.io/badge/Language-Uyghur-blue) ![Purpose](https://img.shields.io/badge/Purpose-AI%20Training-purple) ![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Actively%20Maintained-success) ![Language](https://img.shields.io/badge/Language-Uyghur-blue) ![Purpose](https://img.shields.io/badge/Purpose-AI%20Training-purple) ![License](https://img.shields.io/badge/License-MIT-green)
 
 ## 🌹 Introduction / كىرىش سۆز
 
@@ -59,16 +59,10 @@ This corpus is a carefully curated collection of texts sourced from the open int
 
 ---
 
-## ❤️ Acknowledgement / رەھمەت
-We extend our gratitude to all the writers, intellectuals, and contributors who have enriched the Uyghur internet with their content. This dataset is a tribute to your words.
-
-بۇ ئەسەرلەرنى يازغان، ساقلىغان ۋە بىزگىچە يەتكۈزگەن بارلىق قەلەمكەش، زىيالىي ۋە تورداشلارغا رەھمەت ئېيتىمىز. بۇ ئامبار سىلەرنىڭ ئەجرىڭلارنىڭ سۈنئىي ئىدراك دۇنياسىدىكى جۇلاسىدۇر.
-
----
-
 ## 🚀 Technical Highlights / تېخنىكىلىق ئالاھىدىلىكى
 
 To solve the "Lost-in-the-Middle" problem common in LLM training, this dataset features **Semantic Chunking**:
+
 LLM مەشىقىدىكى «ئۇزۇن مەزمۇننى ئۇنتۇپ قېلىش» مەسىلىسىنى ھەل قىلىش ئۈچۈن، بۇ ئامبار **«مەزمۇنلۇق بۆلەك» (Semantic Chunking)** تېخنىكىسى بىلەن بىر تەرەپ قىلىندى:
 
 1.  **Format:** `Parquet` (Fast, compressed, and ready for Python Pandas/Hugging Face).
@@ -88,10 +82,13 @@ LLM مەشىقىدىكى «ئۇزۇن مەزمۇننى ئۇنتۇپ قېلىش»
 | **`author`** | The original creator of the work. <br> ئەسەرنىڭ ئاپتورى. |
 | **`source`** | The origin platform or publisher. <br> ئەسەر ئېلىنغان مەنبە. |
 | **`date`** | Publication date (if available). <br> ئېلان قىلىنغان ۋاقتى. |
+| **`translator`** | Name of the translator (if applicable). <br> تەرجىمان (تەرجىمە ئەسەرلەر ئۈچۈن). |
 
 ---
 
 ## 💻 Usage Example / ئىشلىتىش
+
+You can load this dataset directly in Python using the `datasets` library:
 
 ```python
 from datasets import load_dataset
