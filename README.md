@@ -5,8 +5,8 @@ license: mit
 task_categories:
 - text-generation
 - translation
-- fill-mask
-pretty_name: Uyghur Corpus (LLM Ready)
+- language-modeling
+pretty_name: Uyghur Corpus (AI-Optimized)
 dataset_info:
   features:
   - name: title
@@ -28,54 +28,69 @@ dataset_info:
     num_examples: 25000
 ---
 
-# Uyghur Large-Scale Text Corpus for AI & LLM Training
-### سۈنئىي ئىدراك ۋە چوڭ تىل مودېللىرى ئۈچۈن ئۇيغۇرچە تىل ئامبىرى
+# 🌟 Uyghur AI Corpus: Bridging Heritage & Technology
+# 🌟 ئۇيغۇرچە سۈنئىي ئىدراك خەزىنىسى: مىراس ۋە تېخنىكا كۆۋرۈكى
 
-![Status](https://img.shields.io/badge/Status-Actively%20Maintained-success) ![Language](https://img.shields.io/badge/Language-Uyghur-blue) ![License](https://img.shields.io/badge/License-MIT-green) ![AI Ready](https://img.shields.io/badge/AI-LLM%20Ready-orange)
+![Status](https://img.shields.io/badge/Status-Active-success) ![Language](https://img.shields.io/badge/Language-Uyghur-blue) ![Purpose](https://img.shields.io/badge/Purpose-AI%20Training-purple) ![License](https://img.shields.io/badge/License-MIT-green)
 
-## 📖 Dataset Description / ئامبار ھەققىدە چۈشەندۈرۈش
+## 🌹 Introduction / كىرىش سۆز
 
-This repository hosts a **comprehensive and actively maintained** dataset of the Uyghur language (Ug), designed specifically to train **Large Language Models (LLMs)**, **Machine Translation systems**, and **NLP tools**. 
+In the era of Artificial Intelligence, language is data, and data is survival. 
+**The Uyghur AI Corpus** is a passionate initiative to ensure the Uyghur language thrives in the digital age. This dataset serves as a foundational resource to train Large Language Models (LLMs), enabling them to understand, generate, and translate Uyghur with native-level proficiency.
 
-The dataset aggregates high-quality texts from socio-political, literary, historical, and general domains to solve the "low-resource" problem for the Uyghur language in Artificial Intelligence.
+**سۈنئىي ئىدراك (AI) دەۋرىدە، تىل — سانلىق مەلۇمات دېمەكتۇر.**
+بۇ ئامبار — ئۇيغۇر تىلىنىڭ رەقەملىك دۇنيادىكى ئورنىنى ساقلاپ قېلىش ۋە تېخىمۇ يۈكسەلدۈرۈش ئۈچۈن تەييارلانغان بىر كۆڭۈل سوۋغىسىدۇر. بىزنىڭ مەقسىتىمىز: كەلگۈسىدىكى سۈنئىي ئىدراك مودېللىرىنىڭ (ChatGPT, Claude, Gemini قاتارلىق) ئۇيغۇرچىنى راۋان چۈشىنىشى، تەرجىمە قىلىشى ۋە بىزنىڭ مەدەنىيىتىمىزنى توغرا ئىپادىلىشىگە بىر تامچە بولسىمۇ ھەسسە قوشۇشتۇر.
 
-The data has been pre-processed, cleaned, and semantically chunked to ensure optimal performance for model training.
+---
 
-بۇ ئامبار ئۇيغۇر تىلىدىكى **سۈنئىي ئىدراك (AI)**، **چوڭ تىل مودېللىرى (LLM)** ۋە **تەرجىمە ماشىنىلىرىنى** مەشىق قىلدۇرۇش ئۈچۈن مەخسۇس قۇرۇلغان، داۋاملىق يېڭىلىنىپ تۇرىدىغان ئۇنىۋېرسال سانلىق مەلۇمات ئامبىرىدۇر. بۇ ئامبار سىياسىي، ئىجتىمائىي، تارىخىي ۋە ئەدەبىي تېمىلارنى ئۆز ئىچىگە ئالىدۇ.
+## 💎 Source & Collection / مەنبە ۋە توپلىنىشى
 
-بارلىق مەلۇماتلار تازىلانغان، رەتلەنگەن ۋە مودېللارغا ماسلىشىشى ئۈچۈن مەزمۇنلۇق بۆلەكلەرگە (Semantic Chunking) ئايرىلغان.
+This corpus is a carefully curated collection of texts sourced from the open internet. It represents the collective intellectual heritage of the Uyghur people shared on various public platforms, forums, and websites over the years.
 
-## 📊 Real-Time Statistics / سانلىق مەلۇمات ئەھۋالى
+* **Diverse Origins:** Stories, essays, articles, and historical accounts available in the public domain.
+* **Respect for Authors:** While collected for AI training purposes, we deeply respect the original creators. Metadata such as `author` and `source` has been preserved wherever possible to credit the intellectual owners.
+* **Cleaned & Processed:** The raw web data has been meticulously cleaned, formatted, and structured to meet high-quality AI training standards.
 
-**Note:** This dataset is dynamic. The number of articles and total size grows regularly.
-**ئەسكەرتىش:** بۇ ئامبار داۋاملىق چوڭىيىۋاتىدۇ.
+**بۇ خەزىنىنىڭ مەنبەسى — كەڭ ئىنتېرنېت دۇنياسىدۇر.**
+بۇ ئامباردىكى ئەسەرلەر يىللاردىن بۇيان تۈرلۈك تور بەت، مۇنبەر ۋە ئىجتىمائىي تاراتقۇلاردا ئېلان قىلىنغان، خەلقىمىزنىڭ ئەقلىي بايلىقى بولغان ئوچۇق مەنبەلىك ئەسەرلەردىن تاللاپ يىغىلدى.
 
-> **Please refer to the file list or Hugging Face Dataset Viewer for the exact, real-time row count and data size.**
-> **ئېنىق ماقالە سانى ۋە ھەجىمىنى كۆرۈش ئۈچۈن، ھۆججەت تىزىملىكىگە ياكى Hugging Face نىڭ كۆرۈش كۆزنىكىگە قاراڭ.**
+* **مەقسەت:** بۇ ئەسەرلەرنى توپلاشتىكى بىردىنبىر مەقسەت — **سۈنئىي ئىدراكنىڭ ئۇيغۇرچە سەۋىيەسىنى ئۆستۈرۈش**، تىلىمىزنىڭ نازۇكلىقى ۋە پاساھىتىنى ماشىنىلارغا ئۆگىتىشتىن ئىبارەت.
+* **ھۆرمەت:** بىز ھەر بىر يازمىنىڭ ئاپتورىغا ۋە ئەسلى مەنبەسىگە ئالىي ھۆرمەت بىلدۈرىمىز. شۇڭا، سانلىق مەلۇماتلار تازىلانغاندا `author` (ئاپتور) ۋە `source` (مەنبە) ئۇچۇرلىرى ئىمكانقەدەر ساقلاپ قېلىندى.
+
+---
+
+## 🚀 Technical Highlights / تېخنىكىلىق ئالاھىدىلىكى
+
+To solve the "Lost-in-the-Middle" problem common in LLM training, this dataset features **Semantic Chunking**:
+LLM مەشىقىدىكى «ئۇزۇن مەزمۇننى ئۇنتۇپ قېلىش» مەسىلىسىنى ھەل قىلىش ئۈچۈن، بۇ ئامبار **«مەزمۇنلۇق بۆلەك» (Semantic Chunking)** تېخنىكىسى بىلەن بىر تەرەپ قىلىندى:
+
+1.  **Format:** `Parquet` (Fast, compressed, and ready for Python Pandas/Hugging Face).
+2.  **Chunking Strategy:** Long texts (novels, long essays) are intelligently split into 2000-word segments without breaking sentences or paragraphs.
+3.  **Schema Compatibility:** Renamed standard columns (e.g., `content` → `text`) for instant compatibility with PyTorch/TensorFlow datasets.
+
+**ئەسكەرتىش:** ئۇزۇن رومانلار ۋە چوڭ ئەسەرلەر ئوقۇرمەنلەرگە ۋە ماشىنىغا قۇلايلىق بولۇشى ئۈچۈن `(1-قىسىم)`، `(2-قىسىم)` شەكلىدە رەتلىك بۆلۈندى.
+
+---
 
 ## 📂 Data Structure / قۇرۇلمىسى
 
-The dataset uses the optimized `Parquet` format, which is faster and smaller than JSONL but fully compatible with Pandas and Hugging Face datasets.
-مەلۇماتلار ئەلالاشتۇرۇلغان `Parquet` فورماتىدا ساقلانغان. بۇ فورمات JSONL غا قارىغاندا تېز ۋە ئىخچام.
-
-### Schema (ئىستونلارنىڭ مەنىسى):
-
-| Field / ئىستون | Description / چۈشەندۈرۈش |
+| Column / ئىستون | Meaning / مەنىسى |
 | :--- | :--- |
-| **`title`** | The title of the article. Long articles are split into parts (e.g., "Title (1-قىسىم)"). <br> ماقالە ماۋزۇسى. ئۇزۇن ئەسەرلەر (1-قىسىم، 2-قىسىم) دەپ ئايرىلغان. |
-| **`text`** | **The main content.** Renamed from 'content' to 'text' for standard LLM compatibility. <br> ئاساسلىق تېكىست مەزمۇنى. |
-| **`author`** | Name of the author (if available). <br> ئاپتور (ئەگەر بار بولسا). |
-| **`source`** | The origin of the text (website, book, or publisher). <br> مەنبە (تور بەت، كىتاب ياكى نەشرىيات). |
-| **`date`** | Publication date (YYYY-MM-DD format). <br> ئېلان قىلىنغان ۋاقتى. |
-| **`translator`** | Name of the translator (for translated works). <br> تەرجىمان (تەرجىمە ئەسەرلەر ئۈچۈن). |
+| **`title`** | The title of the work (includes part numbers for split texts). <br> ئەسەر ماۋزۇسى. |
+| **`text`** | **The main content** used for training. <br> مەشىق قىلدۇرۇلىدىغان ئاساسلىق تېكىست. |
+| **`author`** | The original creator of the work. <br> ئەسەرنىڭ ئاپتورى. |
+| **`source`** | The origin platform or publisher. <br> ئەسەر ئېلىنغان مەنبە. |
+| **`date`** | Publication date (if available). <br> ئېلان قىلىنغان ۋاقتى. |
 
-### Example Row (مىسال):
+---
 
-```json
-{
-  "title": "قۇتادغۇبىلىك (1-قىسىم)",
-  "text": "بۇ ۋاپاسىز دۇنيانىڭ قىلىقلىرىنى ئەقىل ئىشلىتىپ تەسەۋۋۇر قىلساڭ...",
-  "author": "يۈسۈپ خاس ھاجىپ",
-  "source": "قەدىمكى ئەسەرلەر",
-  "date": "1069"
-}
+## 💻 Usage Example / ئىشلىتىش
+
+```python
+from datasets import load_dataset
+
+# Load the dataset
+dataset = load_dataset("Uyghur-Corpus/Uyghur-Corpus")
+
+# Peek at the first entry
+print(dataset['train'][0])
