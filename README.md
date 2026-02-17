@@ -70,6 +70,12 @@ LLM مەشىقىدىكى «ئۇزۇن مەزمۇننى ئۇنتۇپ قېلىش»
 
 **ئەسكەرتىش:** ئۇزۇن رومانلار ۋە چوڭ ئەسەرلەر ئوقۇرمەنلەرگە ۋە ماشىنىغا قۇلايلىق بولۇشى ئۈچۈن `(1-قىسىم)`، `(2-قىسىم)` شەكلىدە رەتلىك بۆلۈندى.
 
+
+## ❤️ Acknowledgement / رەھمەت
+We extend our gratitude to all the writers, intellectuals, and contributors who have enriched the Uyghur internet with their content. This dataset is a tribute to your words.
+
+بۇ ئەسەرلەرنى يازغان، ساقلىغان ۋە بىزگىچە يەتكۈزگەن بارلىق قەلەمكەش، زىيالىي ۋە تورداشلارغا رەھمەت ئېيتىمىز. بۇ ئامبار سىلەرنىڭ ئەجرىڭلارنىڭ سۈنئىي ئىدراك دۇنياسىدىكى جۇلاسىدۇر.
+
 ---
 
 ## 📂 Data Structure / قۇرۇلمىسى
