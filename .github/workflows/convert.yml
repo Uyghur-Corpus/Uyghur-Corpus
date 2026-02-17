@@ -53,7 +53,6 @@ jobs:
                               articles_data.append({'title': title, 'author': author, 'date': str(date), 'text': body, 'source': f})
                               continue
                       
-                      # ئەگەر ئۇچۇر قوشۇلمىغان بولسا
                       title = os.path.basename(f).replace('.md', '')
                       articles_data.append({'title': title, 'author': 'Unknown', 'date': 'Unknown', 'text': content.strip(), 'source': f})
                       
@@ -65,7 +64,7 @@ jobs:
               df_articles.to_parquet('articles_corpus.parquet', engine='pyarrow', index=False)
               print('✅ يېڭى ستونلار بىلەن articles_corpus.parquet يېڭىلاندى.')
 
-          # JSONL ھۆججەتلىرىنىمۇ ئايلاندۇرۇش (ئۆزگەرمىدى)
+          # JSONL ھۆججەتلىرىنىمۇ ئايلاندۇرۇش
           for f in glob.glob('**/*.jsonl', recursive=True):
               if '.github' in f: continue
               try:
@@ -73,7 +72,7 @@ jobs:
               except: pass
           "
 
-          - name: 5. ئۆزگىرىشنى يوللاش (GitHub & Hugging Face)
+      - name: 5. ئۆزگىرىشنى يوللاش (GitHub & Hugging Face)
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
@@ -87,7 +86,13 @@ jobs:
           # 1. ئالدى بىلەن GitHub نى يېڭىلاش
           git push origin main
           
-          # 2. ئاندىن Hugging Face غا ماس قەدەملەش (مەجبۇرىي يوللاش)
-          # Username ۋە DatasetName نى ئۆزىڭىزنىڭكىگە ئۆزگەرتىڭ
+          # 2. ئاندىن Hugging Face غا ماس قەدەملەش
+          # ئىشلەتكۈچى_ئىسمى/تۈر_ئىسمى نى ئۆزگەرتىشنى ئۇنۇتماڭ
           git remote add hf https://x-access-token:$HF_TOKEN@huggingface.co/datasets/ئىشلەتكۈچى_ئىسمى/تۈر_ئىسمى || true
           git push hf main --force
+
+      # --- يېڭى قوشۇلغان قىسىم: Hugging Face نىڭ ئاپتوماتىك ئايلاندۇرۇش ئىقتىدارىنى قوزغىتىش ---
+      - name: 6. Hugging Face ئاپتوماتىك ئايلاندۇرۇشنى قوزغىتىش
+        run: |
+          curl -X POST https://huggingface.co/api/datasets/ئىشلەتكۈچى_ئىسمى/تۈر_ئىسمى/webapp-restart \
+          -H "Authorization: Bearer ${{ secrets.HF_TOKEN }}"
