@@ -59,6 +59,13 @@ This corpus is a carefully curated collection of texts sourced from the open int
 
 ---
 
+## ❤️ Acknowledgement / رەھمەت
+We extend our gratitude to all the writers, intellectuals, and contributors who have enriched the Uyghur internet with their content. This dataset is a tribute to your words.
+
+بۇ ئەسەرلەرنى يازغان، ساقلىغان ۋە بىزگىچە يەتكۈزگەن بارلىق قەلەمكەش، زىيالىي ۋە تورداشلارغا رەھمەت ئېيتىمىز. بۇ ئامبار سىلەرنىڭ ئەجرىڭلارنىڭ سۈنئىي ئىدراك دۇنياسىدىكى جۇلاسىدۇر.
+
+---
+
 ## 🚀 Technical Highlights / تېخنىكىلىق ئالاھىدىلىكى
 
 To solve the "Lost-in-the-Middle" problem common in LLM training, this dataset features **Semantic Chunking**:
@@ -69,12 +76,6 @@ LLM مەشىقىدىكى «ئۇزۇن مەزمۇننى ئۇنتۇپ قېلىش»
 3.  **Schema Compatibility:** Renamed standard columns (e.g., `content` → `text`) for instant compatibility with PyTorch/TensorFlow datasets.
 
 **ئەسكەرتىش:** ئۇزۇن رومانلار ۋە چوڭ ئەسەرلەر ئوقۇرمەنلەرگە ۋە ماشىنىغا قۇلايلىق بولۇشى ئۈچۈن `(1-قىسىم)`، `(2-قىسىم)` شەكلىدە رەتلىك بۆلۈندى.
-
-
-## ❤️ Acknowledgement / رەھمەت
-We extend our gratitude to all the writers, intellectuals, and contributors who have enriched the Uyghur internet with their content. This dataset is a tribute to your words.
-
-بۇ ئەسەرلەرنى يازغان، ساقلىغان ۋە بىزگىچە يەتكۈزگەن بارلىق قەلەمكەش، زىيالىي ۋە تورداشلارغا رەھمەت ئېيتىمىز. بۇ ئامبار سىلەرنىڭ ئەجرىڭلارنىڭ سۈنئىي ئىدراك دۇنياسىدىكى جۇلاسىدۇر.
 
 ---
 
