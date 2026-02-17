@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: 1. كودلارنى يۈكلەش
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # بارلىق تارىخنى يۈكلەش (Push قىلغاندا خاتالىق بەرمەسلىك ئۈچۈن)
 
       - name: 2. Python تەييارلاش
         uses: actions/setup-python@v4
@@ -22,7 +24,7 @@ jobs:
       - name: 3. قوراللارنى قاچىلاش
         run: pip install pandas pyarrow fastparquet PyYAML
 
-      - name: 4. مەلۇماتلارنى سۈزۈپ جەملەش
+      - name: 4. مەلۇماتلارنى ئايلاندۇرۇش ۋە جەملەش
         run: |
           python -c "
           import pandas as pd
@@ -30,7 +32,7 @@ jobs:
           import glob
           import yaml
 
-          # Articles ئىچىدىكى ماقالىلەرنى جەملەش
+          # 1. Articles ئىچىدىكى ماقالىلەرنى جەملەش
           md_files = glob.glob('Articles/**/*.md', recursive=True)
           articles_data = []
           
@@ -38,38 +40,35 @@ jobs:
               try:
                   with open(f, 'r', encoding='utf-8') as file:
                       content = file.read()
-                      
-                      # YAML Front Matter بۆلىكىنى ئايرىۋېلىش
                       if content.startswith('---'):
                           parts = content.split('---', 2)
                           if len(parts) >= 3:
                               header = yaml.safe_load(parts[1])
                               body = parts[2].strip()
-                              
                               author = header.get('author', 'Unknown')
                               date = header.get('date', 'Unknown')
                               title = header.get('title', os.path.basename(f).replace('.md', ''))
-                              
                               articles_data.append({'title': title, 'author': author, 'date': str(date), 'text': body, 'source': f})
                               continue
-                      
                       title = os.path.basename(f).replace('.md', '')
                       articles_data.append({'title': title, 'author': 'Unknown', 'date': 'Unknown', 'text': content.strip(), 'source': f})
-                      
               except Exception as e:
                   print(f'❌ MD ئوقۇش خاتالىقى {f}: {e}')
           
           if articles_data:
               df_articles = pd.DataFrame(articles_data)
               df_articles.to_parquet('articles_corpus.parquet', engine='pyarrow', index=False)
-              print('✅ يېڭى ستونلار بىلەن articles_corpus.parquet يېڭىلاندى.')
+              print('✅ articles_corpus.parquet ھاسىل بولدى.')
 
-          # JSONL ھۆججەتلىرىنىمۇ ئايلاندۇرۇش
+          # 2. بارلىق JSONL ھۆججەتلىرىنى ئايلاندۇرۇش
           for f in glob.glob('**/*.jsonl', recursive=True):
               if '.github' in f: continue
               try:
-                  pd.read_json(f, lines=True).to_parquet(f.replace('.jsonl', '.parquet'), engine='pyarrow', index=False)
-              except: pass
+                  target = f.replace('.jsonl', '.parquet')
+                  pd.read_json(f, lines=True).to_parquet(target, engine='pyarrow', index=False)
+                  print(f'✅ {f} -> {target} ئايلاندى.')
+              except Exception as e:
+                  print(f'❌ {f} ئايلاندۇرۇش مەغلۇپ بولدى: {e}')
           "
 
       - name: 5. ئۆزگىرىشنى يوللاش (GitHub & Hugging Face)
@@ -81,18 +80,18 @@ jobs:
           
           # Parquet ھۆججەتلىرىنى قوشۇش
           find . -name "*.parquet" -exec git add {} +
-          git commit -m "Auto-update: Parquet files and metadata" || echo "No changes to commit"
           
-          # 1. ئالدى بىلەن GitHub نى يېڭىلاش
-          git push origin main
-          
-          # 2. ئاندىن Hugging Face غا ماس قەدەملەش
-          # ئىشلەتكۈچى_ئىسمى/تۈر_ئىسمى نى ئۆزگەرتىشنى ئۇنۇتماڭ
-          git remote add hf https://x-access-token:$HF_TOKEN@huggingface.co/datasets/ئىشلەتكۈچى_ئىسمى/تۈر_ئىسمى || true
-          git push hf main --force
-
-      # --- يېڭى قوشۇلغان قىسىم: Hugging Face نىڭ ئاپتوماتىك ئايلاندۇرۇش ئىقتىدارىنى قوزغىتىش ---
-      - name: 6. Hugging Face ئاپتوماتىك ئايلاندۇرۇشنى قوزغىتىش
-        run: |
-          curl -X POST https://huggingface.co/api/datasets/ئىشلەتكۈچى_ئىسمى/تۈر_ئىسمى/webapp-restart \
-          -H "Authorization: Bearer ${{ secrets.HF_TOKEN }}"
+          # ئۆزگىرىش بار-يوقلۇقىنى تەكشۈرۈش
+          if git diff --staged --quiet; then
+            echo "Hech qanday ozgerish yoq."
+          else
+            git commit -m "Auto-update: Parquet files and metadata"
+            
+            # GitHub غا مەجبۇرىي يوللاش (Conflict نى يوقىتىش ئۈچۈن)
+            git push origin main --force
+            
+            # Hugging Face غا مەجبۇرىي يوللاش
+            # ئەسكەرتىش: 'Uyghur-Corpus/Uyghur-Corpus' نى Hugging Face تۈر ئادرېسى بىلەن ئوخشاش قىلىڭ
+            git remote add hf https://x-access-token:$HF_TOKEN@huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus || git remote set-url hf https://x-access-token:$HF_TOKEN@huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus
+            git push hf main --force
+          fi
