@@ -1,27 +1,32 @@
+---
+language:
+- ug
+license: mit
+task_categories:
+- text-generation
+- translation
+- fill-mask
+pretty_name: Uyghur Corpus (LLM Ready)
 dataset_info:
   features:
-    - name: title
-      dtype: string
-    - name: author
-      dtype: string
-    - name: date
-      dtype: string
-    - name: tags
-      sequence: string
-    - name: content
-      dtype: string
-    - name: language
-      dtype: string
-    - name: source
-      dtype: string
-    - name: sections
-      list:
-        - name: title
-          dtype: string
-        - name: content
-          dtype: string
-        - name: tags
-          sequence: string
+  - name: title
+    dtype: string
+  - name: text
+    dtype: string
+  - name: author
+    dtype: string
+  - name: source
+    dtype: string
+  - name: date
+    dtype: string
+  - name: translator
+    dtype: string
+  config_name: default
+  splits:
+  - name: train
+    num_bytes: 41943040
+    num_examples: 25000
+---
 
 # Uyghur Large-Scale Text Corpus for AI & LLM Training
 ### سۈنئىي ئىدراك ۋە چوڭ تىل مودېللىرى ئۈچۈن ئۇيغۇرچە تىل ئامبىرى
@@ -34,7 +39,11 @@ This repository hosts a **comprehensive and actively maintained** dataset of the
 
 The dataset aggregates high-quality texts from socio-political, literary, historical, and general domains to solve the "low-resource" problem for the Uyghur language in Artificial Intelligence.
 
+The data has been pre-processed, cleaned, and semantically chunked to ensure optimal performance for model training.
+
 بۇ ئامبار ئۇيغۇر تىلىدىكى **سۈنئىي ئىدراك (AI)**، **چوڭ تىل مودېللىرى (LLM)** ۋە **تەرجىمە ماشىنىلىرىنى** مەشىق قىلدۇرۇش ئۈچۈن مەخسۇس قۇرۇلغان، داۋاملىق يېڭىلىنىپ تۇرىدىغان ئۇنىۋېرسال سانلىق مەلۇمات ئامبىرىدۇر. بۇ ئامبار سىياسىي، ئىجتىمائىي، تارىخىي ۋە ئەدەبىي تېمىلارنى ئۆز ئىچىگە ئالىدۇ.
+
+بارلىق مەلۇماتلار تازىلانغان، رەتلەنگەن ۋە مودېللارغا ماسلىشىشى ئۈچۈن مەزمۇنلۇق بۆلەكلەرگە (Semantic Chunking) ئايرىلغان.
 
 ## 📊 Real-Time Statistics / سانلىق مەلۇمات ئەھۋالى
 
@@ -46,16 +55,27 @@ The dataset aggregates high-quality texts from socio-political, literary, histor
 
 ## 📂 Data Structure / قۇرۇلمىسى
 
-The dataset follows the industry-standard `JSONL` format, optimized for direct ingestion by training frameworks like PyTorch, TensorFlow, and Hugging Face Transformers.
-مەلۇماتلار خەلقئارالىق ئۆلچەم `JSONL` فورماتىدا ساقلانغان بولۇپ، مودېللار بىۋاسىتە ئوقۇيالايدۇ.
+The dataset uses the optimized `Parquet` format, which is faster and smaller than JSONL but fully compatible with Pandas and Hugging Face datasets.
+مەلۇماتلار ئەلالاشتۇرۇلغان `Parquet` فورماتىدا ساقلانغان. بۇ فورمات JSONL غا قارىغاندا تېز ۋە ئىخچام.
 
-**Schema:**
+### Schema (ئىستونلارنىڭ مەنىسى):
+
+| Field / ئىستون | Description / چۈشەندۈرۈش |
+| :--- | :--- |
+| **`title`** | The title of the article. Long articles are split into parts (e.g., "Title (1-قىسىم)"). <br> ماقالە ماۋزۇسى. ئۇزۇن ئەسەرلەر (1-قىسىم، 2-قىسىم) دەپ ئايرىلغان. |
+| **`text`** | **The main content.** Renamed from 'content' to 'text' for standard LLM compatibility. <br> ئاساسلىق تېكىست مەزمۇنى. |
+| **`author`** | Name of the author (if available). <br> ئاپتور (ئەگەر بار بولسا). |
+| **`source`** | The origin of the text (website, book, or publisher). <br> مەنبە (تور بەت، كىتاب ياكى نەشرىيات). |
+| **`date`** | Publication date (YYYY-MM-DD format). <br> ئېلان قىلىنغان ۋاقتى. |
+| **`translator`** | Name of the translator (for translated works). <br> تەرجىمان (تەرجىمە ئەسەرلەر ئۈچۈن). |
+
+### Example Row (مىسال):
+
+```json
 {
-  "title": "Article Title / ماقالە ماۋزۇسى",
-  "author": "Author Name / ئاپتور",
-  "date": "Publication Date / ۋاقتى",
-  "tags": ["Topic1", "Topic2"],
-  "content": "Full text in Markdown... / تولۇق تېكىست",
-  "language": "ug",
-  "sections": [{"title": "تارماق ماۋزۇ", "content": "بۆلەك مەزمۇنى", "tags": []}]
+  "title": "قۇتادغۇبىلىك (1-قىسىم)",
+  "text": "بۇ ۋاپاسىز دۇنيانىڭ قىلىقلىرىنى ئەقىل ئىشلىتىپ تەسەۋۋۇر قىلساڭ...",
+  "author": "يۈسۈپ خاس ھاجىپ",
+  "source": "قەدىمكى ئەسەرلەر",
+  "date": "1069"
 }
