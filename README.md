@@ -7,6 +7,7 @@ task_categories:
 - translation
 - fill-mask
 pretty_name: Uyghur Corpus (AI-Optimized)
+homepage: https://huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus  # <--- بۇ قۇر قوشۇلدى
 dataset_info:
   features:
   - name: title
