@@ -24,32 +24,6 @@ dataset_info:
       dtype: string
 ---
 
----
-language:
-  - ug
-license: mit
-task_categories:
-  - text-generation
-  - translation
-  - fill-mask
-pretty_name: Uyghur Corpus (AI-Optimized)
-homepage: https://huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus
-dataset_info:
-  features:
-    - name: title
-      dtype: string
-    - name: text
-      dtype: string
-    - name: author
-      dtype: string
-    - name: source
-      dtype: string
-    - name: date
-      dtype: string
-    - name: translator
-      dtype: string
----
-
 # 🌟 Uyghur AI Corpus: Bridging Heritage & Technology
 # 🌟 ئۇيغۇرچە سۈنئىي ئىدراك خەزىنىسى: مىراس ۋە تېخنىكا كۆۋرۈكى
 
