@@ -54,12 +54,12 @@ This corpus is a carefully curated collection of texts sourced from the open int
 * **⚖️ Respect for Authors:** While collected for AI training purposes, we deeply respect the original creators. Metadata such as `author` and `source` has been preserved wherever possible to credit the intellectual owners.
 * **🛠️ Cleaned & Processed:** The raw web data has been meticulously cleaned, formatted, and structured to meet high-quality AI training standards.
 
-
-**بۇ خەزىنىنىڭ مەنبەسى — كەڭ ئىنتېرنېت دۇنياسىدۇر.** بۇ ئامباردىكى ئەسەرلەر يىللاردىن بۇيان تۈرلۈك تور بەت، مۇنبەر ۋە ئىجتىمائىي تاراتقۇلاردا ئېلان قىلىنغان، خەلقىمىزنىڭ ئەقلىي بايلىقى بولغان ئوچۇق مەنبەلىك ئەسەرلەردىن تاللاپ يىغىلدى.
+**بۇ خەزىنىنىڭ مەنبەسى — كەڭ ئىنتېرنېت دۇنياسىدۇر.**
+بۇ ئامباردىكى ئەسەرلەر يىللاردىن بۇيان تۈرلۈك تور بەت، مۇنبەر ۋە ئىجتىمائىي تاراتقۇلاردا ئېلان قىلىنغان، خەلقىمىزنىڭ ئەقلىي بايلىقى بولغان ئوچۇق مەنبەلىك ئەسەرلەردىن تاللاپ يىغىلدى.
 
 * **🎯 مەقسەت:** بۇ ئەسەرلەرنى توپلاشتىكى بىردىنبىر مەقسەت — **سۈنئىي ئىدراكنىڭ ئۇيغۇرچە سەۋىيەسىنى ئۆستۈرۈش**، تىلىمىزنىڭ نازۇكلىقى ۋە پاساھىتىنى ماشىنىلارغا ئۆگىتىشتىن ئىبارەت.
 * **🌹 ھۆرمەت:** بىز ھەر بىر يازمىنىڭ ئاپتورىغا ۋە ئەسلى مەنبەسىگە ئالىي ھۆرمەت بىلدۈرىمىز. شۇڭا، سانلىق مەلۇماتلار تازىلانغاندا `author` (ئاپتور) ۋە `source` (مەنبە) ئۇچۇرلىرى ئىمكانقەدەر ساقلاپ قېلىندى.
-  
+
 ---
 
 ## 🚀 Technical Highlights / تېخنىكىلىق ئالاھىدىلىكى
@@ -68,13 +68,16 @@ To solve the "Lost-in-the-Middle" problem common in LLM training, this dataset f
 
 
 
-1. **Format:** `Parquet` (Fast, compressed, and ready for Python Pandas/Hugging Face).
-2. **Chunking Strategy:** Long texts are intelligently split into 2000-word segments without breaking sentences.
-3. **Compatibility:** Standardized columns for instant use with PyTorch/TensorFlow datasets.
+1. **Format / فورماتى:** `Parquet` (Fast, compressed, and ready for Python Pandas/Hugging Face).  
+   (تېز، پىرىسلانغان ۋە Python ئۈچۈن تەييارلانغان.)
+2. **Chunking Strategy / پارچىلاش ئىستراتېگىيەسى:** Long texts are intelligently split into 2000-word segments without breaking sentences.  
+   (ئۇزۇن تېكىستلەر جۈملە قۇرۇلمىسىنى بۇزماي تۇرۇپ، 2000 سۆزلۈك بۆلەكلەرگە ئەقىللىق پارچىلاندى.)
+3. **Compatibility / ماسلىشىشچانلىقى:** Standardized columns for instant use with PyTorch/TensorFlow datasets.  
+   (PyTorch ۋە TensorFlow سىستېمىلىرىدا بىۋاسىتە ئىشلىتىشكە ماسلاشتۇرۇلغان.)
 
 ---
 
-## 📂 Data Structure / قۇرۇلمىسى
+## 📂 Data Structure / سانلىق مەلۇمات قۇرۇلمىسى
 
 | Column / ئىستون | Meaning / مەنىسى |
 | :--- | :--- |
@@ -94,8 +97,8 @@ You can load this dataset directly in Python using the `datasets` library:
 ```python
 from datasets import load_dataset
 
-# Load the dataset
+# Load the dataset / سانلىق مەلۇماتنى يۈكلەش
 dataset = load_dataset("Uyghur-Corpus/Uyghur-Corpus")
 
-# Peek at the first entry
+# Peek at the first entry / بىرىنچى ئۇچۇرنى كۆرۈپ بېقىش
 print(dataset['train'][0])
