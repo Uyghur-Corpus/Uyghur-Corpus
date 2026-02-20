@@ -74,16 +74,18 @@ In the era of Artificial Intelligence, language is data, and data is survival.
 
 ## 💎 Source & Collection / مەنبە ۋە توپلىنىشى
 
-This corpus is a carefully curated collection of texts sourced from the open internet. Metadata such as `author` and `source` has been preserved wherever possible to credit the intellectual owners.
+This corpus is a carefully curated collection of texts sourced from the open internet. It represents the collective intellectual heritage of the Uyghur people shared on various public platforms, forums, and websites over the years.
 
-**بۇ خەزىنىنىڭ مەنبەسى — كەڭ ئىنتېرنېت دۇنياسىدۇر.**
-بۇ ئامباردىكى ئەسەرلەر يىللاردىن بۇيان تور بەت، مۇنبەر ۋە ئىجتىمائىي تاراتقۇلاردا ئېلان قىلىنغان، خەلقىمىزنىڭ ئەقلىي بايلىقى بولغان ئوچۇق مەنبەلىك ئەسەرلەردىن تاللاپ يىغىلدى.
+* **🌍 Diverse Origins:** Stories, essays, articles, and historical accounts available in the public domain.
+* **⚖️ Respect for Authors:** While collected for AI training purposes, we deeply respect the original creators. Metadata such as `author` and `source` has been preserved wherever possible to credit the intellectual owners.
+* **🛠️ Cleaned & Processed:** The raw web data has been meticulously cleaned, formatted, and structured to meet high-quality AI training standards.
 
-* **Diversity:** Stories, essays, articles, and historical accounts.
-* **Respect:** Metadata is preserved to credit original authors.
-* **مەقسەت:** سۈنئىي ئىدراكنىڭ ئۇيغۇرچە سەۋىيەسىنى ئۆستۈرۈش.
-* **ھۆرمەت:** ئاپتور ۋە مەنبە ئۇچۇرلىرى ئىمكانقەدەر ساقلاپ قېلىندى.
 
+**بۇ خەزىنىنىڭ مەنبەسى — كەڭ ئىنتېرنېت دۇنياسىدۇر.** بۇ ئامباردىكى ئەسەرلەر يىللاردىن بۇيان تۈرلۈك تور بەت، مۇنبەر ۋە ئىجتىمائىي تاراتقۇلاردا ئېلان قىلىنغان، خەلقىمىزنىڭ ئەقلىي بايلىقى بولغان ئوچۇق مەنبەلىك ئەسەرلەردىن تاللاپ يىغىلدى.
+
+* **🎯 مەقسەت:** بۇ ئەسەرلەرنى توپلاشتىكى بىردىنبىر مەقسەت — **سۈنئىي ئىدراكنىڭ ئۇيغۇرچە سەۋىيەسىنى ئۆستۈرۈش**، تىلىمىزنىڭ نازۇكلىقى ۋە پاساھىتىنى ماشىنىلارغا ئۆگىتىشتىن ئىبارەت.
+* **🌹 ھۆرمەت:** بىز ھەر بىر يازمىنىڭ ئاپتورىغا ۋە ئەسلى مەنبەسىگە ئالىي ھۆرمەت بىلدۈرىمىز. شۇڭا، سانلىق مەلۇماتلار تازىلانغاندا `author` (ئاپتور) ۋە `source` (مەنبە) ئۇچۇرلىرى ئىمكانقەدەر ساقلاپ قېلىندى.
+  
 ---
 
 ## 🚀 Technical Highlights / تېخنىكىلىق ئالاھىدىلىكى
