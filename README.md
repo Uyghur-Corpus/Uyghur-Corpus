@@ -7,7 +7,7 @@ task_categories:
   - translation
   - fill-mask
 pretty_name: Uyghur Corpus (AI-Optimized)
-homepage: https://huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus
+homepage: [https://huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus](https://huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus)
 dataset_info:
   features:
     - name: title
@@ -65,8 +65,6 @@ This corpus is a carefully curated collection of texts sourced from the open int
 ## 🚀 Technical Highlights / تېخنىكىلىق ئالاھىدىلىكى
 
 To solve the "Lost-in-the-Middle" problem common in LLM training, this dataset features **Semantic Chunking**:
-
-
 
 1. **Format / فورماتى:** `Parquet` (Fast, compressed, and ready for Python Pandas/Hugging Face).  
    (تېز، پىرىسلانغان ۋە Python ئۈچۈن تەييارلانغان.)
