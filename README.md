@@ -1,27 +1,27 @@
 ---
 language:
-  - ug
+  - ug
 license: mit
 task_categories:
-  - text-generation
-  - translation
-  - fill-mask
+  - text-generation
+  - translation
+  - fill-mask
 pretty_name: Uyghur Corpus (AI-Optimized)
-homepage: [https://huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus](https://huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus)
+homepage: https://huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus
 dataset_info:
-  features:
-    - name: title
-      dtype: string
-    - name: text
-      dtype: string
-    - name: author
-      dtype: string
-    - name: source
-      dtype: string
-    - name: date
-      dtype: string
-    - name: translator
-      dtype: string
+  features:
+    - name: title
+      dtype: string
+    - name: text
+      dtype: string
+    - name: author
+      dtype: string
+    - name: source
+      dtype: string
+    - name: date
+      dtype: string
+    - name: translator
+      dtype: string
 ---
 
 # 🌟 Uyghur AI Corpus: Bridging Heritage & Technology
@@ -31,7 +31,7 @@ dataset_info:
 
 ## 🌹 Introduction / كىرىش سۆز
 
-In the era of Artificial Intelligence, language is data, and data is survival. 
+In the era of Artificial Intelligence, language is data, and data is survival. 
 **The Uyghur AI Corpus** is an initiative to ensure the Uyghur language thrives in the digital age. This dataset serves as a foundational resource to train Large Language Models (LLMs), enabling them to understand, generate, and translate Uyghur with native-level proficiency.
 
 **سۈنئىي ئىدراك (AI) دەۋرىدە، تىل — سانلىق مەلۇمات دېمەكتۇر.**
@@ -66,12 +66,14 @@ This corpus is a carefully curated collection of texts sourced from the open int
 
 To solve the "Lost-in-the-Middle" problem common in LLM training, this dataset features **Semantic Chunking**:
 
-1. **Format / فورماتى:** `Parquet` (Fast, compressed, and ready for Python Pandas/Hugging Face).  
-   (تېز، پىرىسلانغان ۋە Python ئۈچۈن تەييارلانغان.)
-2. **Chunking Strategy / پارچىلاش ئىستراتېگىيەسى:** Long texts are intelligently split into 2000-word segments without breaking sentences.  
-   (ئۇزۇن تېكىستلەر جۈملە قۇرۇلمىسىنى بۇزماي تۇرۇپ، 2000 سۆزلۈك بۆلەكلەرگە ئەقىللىق پارچىلاندى.)
-3. **Compatibility / ماسلىشىشچانلىقى:** Standardized columns for instant use with PyTorch/TensorFlow datasets.  
-   (PyTorch ۋە TensorFlow سىستېمىلىرىدا بىۋاسىتە ئىشلىتىشكە ماسلاشتۇرۇلغان.)
+
+
+1. **Format / فورماتى:** `Parquet` (Fast, compressed, and ready for Python Pandas/Hugging Face).  
+   (تېز، پىرىسلانغان ۋە Python ئۈچۈن تەييارلانغان.)
+2. **Chunking Strategy / پارچىلاش ئىستراتېگىيەسى:** Long texts are intelligently split into 2000-word segments without breaking sentences.  
+   (ئۇزۇن تېكىستلەر جۈملە قۇرۇلمىسىنى بۇزماي تۇرۇپ، 2000 سۆزلۈك بۆلەكلەرگە ئەقىللىق پارچىلاندى.)
+3. **Compatibility / ماسلىشىشچانلىقى:** Standardized columns for instant use with PyTorch/TensorFlow datasets.  
+   (PyTorch ۋە TensorFlow سىستېمىلىرىدا بىۋاسىتە ئىشلىتىشكە ماسلاشتۇرۇلغان.)
 
 ---
 
@@ -99,4 +101,4 @@ from datasets import load_dataset
 dataset = load_dataset("Uyghur-Corpus/Uyghur-Corpus")
 
 # Peek at the first entry / بىرىنچى ئۇچۇرنى كۆرۈپ بېقىش
-print(dataset['train'][0])
+print(dataset['train'][0])  bunda yanlıs var duzelt
