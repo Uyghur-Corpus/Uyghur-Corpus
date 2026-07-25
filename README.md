@@ -90,15 +90,3 @@ To solve the "Lost-in-the-Middle" problem common in LLM training, this dataset f
 
 ---
 
-## 💻 Usage Example / ئىشلىتىش ئۈلگىسى
-
-You can load this dataset directly in Python using the `datasets` library:
-
-```python
-from datasets import load_dataset
-
-# Load the dataset / سانلىق مەلۇماتنى يۈكلەش
-dataset = load_dataset("Uyghur-Corpus/Uyghur-Corpus")
-
-# Peek at the first entry / بىرىنچى ئۇچۇرنى كۆرۈپ بېقىش
-print(dataset['train'][0])  bunda yanlıs var duzelt
