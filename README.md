@@ -251,3 +251,19 @@ note = {Uyghur text and literature corpus for NLP, language modeling, and comput
 
 > **📌 Project Goal:** More Uyghur data. Better Uyghur AI.
 > **كۆپ ئۇيغۇرچە سانلىق مەلۇمات — تېخىمۇ ياخشى ئۇيغۇرچە سۈنئىي ئىدراك.**
+
+---
+
+ Source / مەنبە
+
+https://www.uyghur-archive.com/
+
+https://orhunpolicycenter.com/uy/
+
+https://www.uysi.org/ug/
+
+https://uyghars.com/
+
+https://wiki.uygur.com/
+
+https://uyghur-archive.blogspot.com/
