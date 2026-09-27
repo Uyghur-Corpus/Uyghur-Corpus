@@ -1,50 +1,50 @@
 ---
 language:
-- ug
+  - ug
 license: mit
 task_categories:
-- text-generation
-- fill-mask
+  - text-generation
+  - fill-mask
 pretty_name: Uyghur AI Corpus
 homepage: https://huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus
 tags:
-- nlp
-- llm
-- uyghur
-- uighur
-- uyghur-language
-- parquet
-- text-corpus
-- poetry
-- literature
-- ghazal
-- rubaiyat
-- folk-poetry
-- turkic-languages
-- low-resource-nlp
-- machine-translation
-- language-modeling
-- ocr
-- uyghur-ocr
+  - nlp
+  - llm
+  - uyghur
+  - uighur
+  - uyghur-language
+  - parquet
+  - text-corpus
+  - poetry
+  - literature
+  - ghazal
+  - rubaiyat
+  - folk-poetry
+  - turkic-languages
+  - low-resource-nlp
+  - machine-translation
+  - language-modeling
+  - ocr
+  - uyghur-ocr
 dataset_info:
-features:
-- name: title
-dtype: string
-- name: text
-dtype: string
-- name: author
-dtype: string
-- name: source
-dtype: string
-- name: date
-dtype: string
-- name: translator
-dtype: string
+  features:
+    - name: title
+      dtype: string
+    - name: text
+      dtype: string
+    - name: author
+      dtype: string
+    - name: source
+      dtype: string
+    - name: date
+      dtype: string
+    - name: translator
+      dtype: string
 configs:
-- config_name: default
-data_files:
-- split: train
-path: "data/train-*.parquet"
+  - config_name: default
+    data_files:
+      - split: train
+        path: "data/train-*.parquet"
 ---
 
 <script type="application/ld+json">
@@ -111,16 +111,14 @@ path: "data/train-*.parquet"
 
 ## 📊 ئاساسىي ئۇچۇرلار / Dataset Information
 
-```
-| كۆرسەتكۈچ / Field | تەپسىلاتى / Details                                        |
-| :---------------- | :--------------------------------------------------------- |
-| **Language**      | ئۇيغۇرچە / Uyghur (`ug` / `uig` / ISO 639-3)               |
-| **Script**        | Uyghur Perso-Arabic script                                 |
-| **Format**        | Apache Parquet (ئىخچام ۋە تېز بىر تەرەپ قىلىنىدۇ)          |
-| **Tasks**         | Text generation, fill-mask, NLP                            |
-| **Domain**        | Literature, poetry, prose, articles, archives              |
-| **License**       | MIT for repository/data structure; see License & Copyright |
-```
+| كۆرسەتكۈچ / Field | تەپسىلاتى / Details |
+| :--- | :--- |
+| **Language** | ئۇيغۇرچە / Uyghur (`ug` / `uig` / ISO 639-3) |
+| **Script** | Uyghur Perso-Arabic script |
+| **Format** | Apache Parquet (ئىخچام ۋە تېز بىر تەرەپ قىلىنىدۇ) |
+| **Tasks** | Text generation, fill-mask, NLP |
+| **Domain** | Literature, poetry, prose, articles, archives |
+| **License** | MIT for repository/data structure; see License & Copyright |
 
 > **ئەسكەرتىش:** Dataset نىڭ ئەمەلىي قۇر سانى ۋە ھۆججەت ھەجىمى سىز يېڭى سانلىق مەلۇمات قوشقاندا Hugging Face سىستېمىسى تەرىپىدىن ئاپتوماتىك ھېسابلىنىپ كۆرسىتىلىدۇ.
 
@@ -146,16 +144,14 @@ Corpus دا تۆۋەندىكىدەك مەزمۇنلار بار:
 
 ## 📂 سانلىق مەلۇمات قۇرۇلمىسى / Schema
 
-```
-| ئىستون / Column  | تىپى / Type | مەزمۇنى / Description                             |
-| :--------------- | :---------- | :------------------------------------------------ |
-| **`title`**      | `string`    | ئەسەرنىڭ ماۋزۇسى ياكى تېما نامى / Title           |
-| **`text`**       | `string`    | بىر تەرەپ قىلىنغان ئاساسلىق تېكىست / Cleaned text |
-| **`author`**     | `string`    | ئاپتور ياكى شائىر / Author or poet                |
-| **`source`**     | `string`    | ئەسەرنىڭ مەنبەسى ياكى تور بەت / Origin source     |
-| **`date`**       | `string`    | ئېلان قىلىنغان ياكى يېزىلغان ۋاقىت / Date         |
-| **`translator`** | `string`    | تەرجىمانى (ئەگەر بار بولسا) / Translator          |
-```
+| ئىستون / Column | تىپى / Type | مەزمۇنى / Description |
+| :--- | :--- | :--- |
+| **`title`** | `string` | ئەسەرنىڭ ماۋزۇسى ياكى تېما نامى / Title |
+| **`text`** | `string` | بىر تەرەپ قىلىنغان ئاساسلىق تېكىست / Cleaned text |
+| **`author`** | `string` | ئاپتور ياكى شائىر / Author or poet |
+| **`source`** | `string` | ئەسەرنىڭ مەنبەسى ياكى تور بەت / Origin source |
+| **`date`** | `string` | ئېلان قىلىنغان ياكى يېزىلغان ۋاقىت / Date |
+| **`translator`** | `string` | تەرجىمانى (ئەگەر بار بولسا) / Translator |
 
 ---
 
@@ -168,7 +164,9 @@ from datasets import load_dataset
 dataset = load_dataset("Uyghur-Corpus/Uyghur-Corpus")
 print(dataset["train"][0])
 
-```
+---
+
+
 
 ### 2. Pandas بىلەن Parquet ئوقۇش
 
