@@ -93,7 +93,6 @@ configs:
 * [⚠️ چەكلىمىلەر / Limitations](#️-چەكلىمىلەر--limitations)
 * [🛡️ ئەخلاقىي ئەسكەرتىش / Ethical Considerations](#️-ئەخلاقىي-ئەسكەرتىش--ethical-considerations)
 * [📝 نەقىل كۆرسىتىش / Citation](#-نەقىل-كۆرسىتىش--citation)
-* [🤝 تۆھپە قوشۇش / Contributing](#-تۆھپە-قوشۇش--contributing)
 * [⚖️ ئىجازەت ۋە نەشر ھوقۇقى / License & Copyright](#️-ئىجازەت-ۋە-نەشر-ھوقۇقى--license--copyright)
 * [🌐 ئۇلانمىلار / Links](#-ئۇلانمىلار--links)
 
@@ -167,7 +166,6 @@ print(dataset["train"][0])
 ---
 
 
-
 ### 2. Pandas بىلەن Parquet ئوقۇش
 
 ```python
@@ -237,14 +235,6 @@ note = {Uyghur text and literature corpus for NLP, language modeling, and comput
 
 ---
 
-## 🤝 تۆھپە قوشۇش / Contributing
-
-بىز يېڭى ئۇيغۇرچە مەنبەلەرنى قوشۇش، OCR خاتالىقلىرىنى تۈزىتىش، ئاپتور ئۇچۇرلىرىنى تولۇقلاش ۋە ئىملا توغرىلاش قاتارلىق ھەرقانداق تۆھپىنى قارشى ئالىمىز.
-
-تۆھپە قوشۇش ئۈچۈن GitHub ئامبىرىدا **Issue** ياكى **Pull Request** ئېچىڭ:
-👉 **[https://github.com/Uyghur-Corpus/Uyghur-Corpus](https://github.com/Uyghur-Corpus/Uyghur-Corpus?utm_source=gemini)**
-
----
 
 ## ⚖️ ئىجازەت ۋە نەشر ھوقۇقى / License & Copyright
 
