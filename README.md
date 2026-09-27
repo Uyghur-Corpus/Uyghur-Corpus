@@ -4,10 +4,16 @@ language:
 license: mit
 task_categories:
   - text-generation
-  - translation
   - fill-mask
-pretty_name: Uyghur Corpus (AI-Optimized)
+pretty_name: Uyghur AI Corpus
 homepage: https://huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus
+tags:
+  - nlp
+  - llm
+  - uyghur
+  - uighur
+  - parquet
+  - text-corpus
 dataset_info:
   features:
     - name: title
@@ -24,69 +30,79 @@ dataset_info:
       dtype: string
 ---
 
-# 🌟 Uyghur AI Corpus: Bridging Heritage & Technology
-# 🌟 ئۇيغۇرچە سۈنئىي ئىدراك خەزىنىسى: مىراس ۋە تېخنىكا كۆۋرۈكى
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Uyghur AI Corpus",
+  "alternateName": [
+    "ئۇيغۇرچە سۈنئىي ئىدراك خەزىنىسى",
+    "Uyghur Corpus",
+    "Uygurca Metin Veri Seti",
+    "维吾尔语文本数据集"
+  ],
+  "description": "An open-source, cleaned Uyghur text dataset for NLP, language modeling, and text processing.",
+  "url": "https://huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus",
+  "keywords": "Uyghur, Uighur, ئۇيغۇر, ئۇيغۇرچە, Uyghur NLP, ug, uig, ISO 639-3, Parquet, 维吾尔语",
+  "inLanguage": "ug",
+  "license": "https://opensource.org/licenses/MIT",
+  "isAccessibleForFree": true
+}
+</script>
 
-![Status](https://img.shields.io/badge/Status-Actively%20Maintained-success) ![Language](https://img.shields.io/badge/Language-Uyghur-blue) ![Purpose](https://img.shields.io/badge/Purpose-AI%20Training-purple) ![License](https://img.shields.io/badge/License-MIT-green)
+# 📚 Uyghur AI Corpus | ئۇيغۇرچە سۈنئىي ئىدراك خەزىنىسى
 
-## 🌹 Introduction / كىرىش سۆز
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97-Hugging%20Face-yellow)](https://huggingface.co/datasets/Uyghur-Corpus/Uyghur-Corpus)
+[![Language](https://img.shields.io/badge/Language-Uyghur%20(ug%20%7C%20uig)-red)](#)
+[![Format](https://img.shields.io/badge/Format-Parquet-green)](#)
+[![Last Commit](https://img.shields.io/github/last-commit/Uyghur-Corpus/Uyghur-Corpus?label=Last%20Update&color=blue)](https://github.com/Uyghur-Corpus/Uyghur-Corpus/commits/main)
+[![Repo Size](https://img.shields.io/github/repo-size/Uyghur-Corpus/Uyghur-Corpus?label=Total%20Size&color=orange)](https://github.com/Uyghur-Corpus/Uyghur-Corpus)
 
-In the era of Artificial Intelligence, language is data, and data is survival. 
-**The Uyghur AI Corpus** is an initiative to ensure the Uyghur language thrives in the digital age. This dataset serves as a foundational resource to train Large Language Models (LLMs), enabling them to understand, generate, and translate Uyghur with native-level proficiency.
+ئۇيغۇر تىلىدىكى تەبىئىي تىل بىر تەرەپ قىلىش (NLP)، چوڭ تىل مودېللىرى (LLM) ۋە تېكىست ئانالىزى ئۈچۈن تور مەنبەلىرىدىن يىغىلىپ تازىلانغان ئوچۇق مەنبەلىك سانلىق مەلۇمات ئامبىرى.
 
-**سۈنئىي ئىدراك (AI) دەۋرىدە، تىل — سانلىق مەلۇمات دېمەكتۇر.**
-بۇ ئامبار — ئۇيغۇر تىلىنىڭ رەقەملىك دۇنيادىكى ئورنىنى ساقلاپ قېلىش ۋە تېخىمۇ يۈكسەلدۈرۈش ئۈچۈن تەييارلانغان بىر كۆڭۈل سوۋغىسىدۇر. بىزنىڭ مەقسىتىمىز: كەلگۈسىدىكى سۈنئىي ئىدراك مودېللىرىنىڭ ئۇيغۇرچىنى راۋان چۈشىنىشى، تەرجىمە قىلىشى ۋە بىزنىڭ مەدەنىيىتىمىزنى توغرا ئىپادىلىشىگە ھەسسە قوشۇشتۇر.
-
----
-
-## 🆕 What's New (Feb 2026 Update) / يېڭىلىنىشلار
-
-- **Content Update:** Added new Uyghur articles and poetry to the dataset.
-- **مەزمۇن يېڭىلاندى:** ئامبارغا يېڭىدىن نۇرغۇن ماقالىلەر ۋە شېئىرلار قوشۇلدى.
-
----
-
-## 💎 Source & Collection / مەنبە ۋە توپلىنىشى
-
-This corpus is a carefully curated collection of texts sourced from the open internet. It represents the collective intellectual heritage of the Uyghur people shared on various public platforms, forums, and websites over the years.
-
-* **🌍 Diverse Origins:** Stories, essays, articles, and historical accounts available in the public domain.
-* **⚖️ Respect for Authors:** While collected for AI training purposes, we deeply respect the original creators. Metadata such as `author` and `source` has been preserved wherever possible to credit the intellectual owners.
-* **🛠️ Cleaned & Processed:** The raw web data has been meticulously cleaned, formatted, and structured to meet high-quality AI training standards.
-
-**بۇ خەزىنىنىڭ مەنبەسى — كەڭ ئىنتېرنېت دۇنياسىدۇر.**
-بۇ ئامباردىكى ئەسەرلەر يىللاردىن بۇيان تۈرلۈك تور بەت، مۇنبەر ۋە ئىجتىمائىي تاراتقۇلاردا ئېلان قىلىنغان، خەلقىمىزنىڭ ئەقلىي بايلىقى بولغان ئوچۇق مەنبەلىك ئەسەرلەردىن تاللاپ يىغىلدى.
-
-* **🎯 مەقسەت:** بۇ ئەسەرلەرنى توپلاشتىكى بىردىنبىر مەقسەت — **سۈنئىي ئىدراكنىڭ ئۇيغۇرچە سەۋىيەسىنى ئۆستۈرۈش**، تىلىمىزنىڭ نازۇكلىقى ۋە پاساھىتىنى ماشىنىلارغا ئۆگىتىشتىن ئىبارەت.
-* **🌹 ھۆرمەت:** بىز ھەر بىر يازمىنىڭ ئاپتورىغا ۋە ئەسلى مەنبەسىگە ئالىي ھۆرمەت بىلدۈرىمىز. شۇڭا، سانلىق مەلۇماتلار تازىلانغاندا `author` (ئاپتور) ۋە `source` (مەنبە) ئۇچۇرلىرى ئىمكانقەدەر ساقلاپ قېلىندى.
+An open-source, cleaned Uyghur text corpus designed for NLP experiments, language modeling, and computational linguistics.
 
 ---
 
-## 🚀 Technical Highlights / تېخنىكىلىق ئالاھىدىلىكى
+### 📊 سانلىق مەلۇمات ھەققىدە / Dataset Info
 
-To solve the "Lost-in-the-Middle" problem common in LLM training, this dataset features **Semantic Chunking**:
-
-
-
-1. **Format / فورماتى:** `Parquet` (Fast, compressed, and ready for Python Pandas/Hugging Face).  
-   (تېز، پىرىسلانغان ۋە Python ئۈچۈن تەييارلانغان.)
-2. **Chunking Strategy / پارچىلاش ئىستراتېگىيەسى:** Long texts are intelligently split into 2000-word segments without breaking sentences.  
-   (ئۇزۇن تېكىستلەر جۈملە قۇرۇلمىسىنى بۇزماي تۇرۇپ، 2000 سۆزلۈك بۆلەكلەرگە ئەقىللىق پارچىلاندى.)
-3. **Compatibility / ماسلىشىشچانلىقى:** Standardized columns for instant use with PyTorch/TensorFlow datasets.  
-   (PyTorch ۋە TensorFlow سىستېمىلىرىدا بىۋاسىتە ئىشلىتىشكە ماسلاشتۇرۇلغان.)
-
----
-
-## 📂 Data Structure / سانلىق مەلۇمات قۇرۇلمىسى
-
-| Column / ئىستون | Meaning / مەنىسى |
+| كۆرسەتكۈچ / Attribute | تەپسىلاتى / Details |
 | :--- | :--- |
-| **`title`** | The title of the work. / ئەسەر ماۋزۇسى. |
-| **`text`** | **The main content** used for training. / ئاساسلىق تېكىست. |
-| **`author`** | The original creator. / ئەسەرنىڭ ئاپتورى. |
-| **`source`** | The origin platform. / ئەسەر ئېلىنغان مەنبە. |
-| **`date`** | Publication date. / ئېلان قىلىنغان ۋاقتى. |
-| **`translator`** | Name of the translator. / تەرجىمان. |
+| **تىلى (Language)** | ئۇيغۇرچە / Uyghur (`ug` / `uig` / ISO 639-3) |
+| **ھۆججەت تىپى (Format)** | Apache Parquet (ئىخچام ۋە تېز بىر تەرەپ قىلىنىدۇ) |
+| **تازىلىنىشى (Cleaning)** | تەكرار مەزمۇنلار ۋە كېرەكسىز بەلگىلەر سۈزۈلگەن |
+| **ئىجازەتنامە (License)** | MIT License |
 
 ---
 
+### 💎 مەنبە ۋە ئەسكەرتىش / Sources & Attribution
+
+بۇ ئامباردىكى مەزمۇنلار تور مۇھىتىدىكى ئوچۇق يازما، ماقالە ۋە ئەدەبىي مەنبەلەردىن يىغىپ تۈزۈلدى.
+
+- ئەسلى يازغۇچى ۋە تېكىست مەنبەلىرىگە ھۆرمەت قىلىش ئۈچۈن، تېكىستلەردىكى ئاپتور (`author`)، مەنبە (`source`) ۋە تەرجىمان (`translator`) ئۇچۇرلىرى ئىمكانقەدەر ئەسلى پېتى ساقلاپ قېلىندى.
+- ئاساسلىق مەقسەت — ئۇيغۇر تىلىنىڭ سۈنئىي ئىدراك ۋە ماشىنا تىلى تەتقىقاتىدىكى سانلىق مەلۇمات ئېھتىياجىنى قامداشقا كۈچ قوشۇش.
+
+---
+
+### 📂 سانلىق مەلۇمات قۇرۇلمىسى / Schema
+
+| ئىستون / Column | تىپى / Type | مەزمۇنى / Description |
+| :--- | :--- | :--- |
+| **`title`** | `string` | ماۋزۇ ياكى تېما نامى |
+| **`text`** | `string` | بىر تەرەپ قىلىنغان ئاساسلىق تېكىست |
+| **`author`** | `string` | ئەسەرنىڭ ئاپتورى (ئەگەر بار بولسا) |
+| **`source`** | `string` | ئەسەر ئېلىنغان تور بەت ياكى مەنبە |
+| **`date`** | `string` | يېزىلغان ياكى ئېلان قىلىنغان ۋاقتى |
+| **`translator`** | `string` | تەرجىمانى (ئەگەر بار بولسا) |
+
+---
+
+### 🚀 تېز ئىشلىتىش / Quick Start
+
+#### Hugging Face Datasets
+```python
+from datasets import load_dataset
+
+dataset = load_dataset("Uyghur-Corpus/Uyghur-Corpus")
+print(dataset["train"][0])
