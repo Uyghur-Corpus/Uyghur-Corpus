@@ -163,6 +163,7 @@ from datasets import load_dataset
 dataset = load_dataset("Uyghur-Corpus/Uyghur-Corpus")
 print(dataset["train"][0])
 
+```
 ---
 
 
@@ -175,6 +176,7 @@ df = pd.read_parquet("hf://datasets/Uyghur-Corpus/Uyghur-Corpus/data/train-00000
 print(df.head())
 
 ```
+---
 
 ### 3. Streaming ھالەتتە ئىشلىتىش
 
